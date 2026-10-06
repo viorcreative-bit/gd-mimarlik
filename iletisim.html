@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>İletişim — GD Mimarlık</title>
+<meta name="description" content="GD Mimarlık ile iletişime geçin: Ataşehir, İstanbul.">
+<meta name="theme-color" content="#0d0d0c">
+<meta property="og:title" content="İletişim — GD Mimarlık">
+<meta property="og:description" content="GD Mimarlık ile iletişime geçin: Ataşehir, İstanbul.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="contact">
+<div id="site-header"></div>
+<main id="top">
+<!-- CONTACT -->
+<section class="contact contact-page">
+  <div class="wrap">
+    <p class="eyebrow">İletişim</p>
+    <h2 class="contact-title">Projenizi <em>birlikte</em><br>yapalım.</h2>
+    <div class="contact-grid">
+      <form class="form" id="form" novalidate>
+        <div class="row">
+          <label class="field"><span>Adınız</span><input name="ad" type="text" autocomplete="given-name" required></label>
+          <label class="field"><span>Soyadınız</span><input name="soyad" type="text" autocomplete="family-name"></label>
+        </div>
+        <div class="row">
+          <label class="field"><span>E-posta</span><input name="email" type="email" autocomplete="email" required></label>
+          <label class="field"><span>Telefon</span><input name="tel" type="tel" autocomplete="tel"></label>
+        </div>
+        <div class="field"><span>Proje türü</span>
+          <div class="pills" id="pills">
+            <button type="button" class="chip">Villa / Konut</button>
+            <button type="button" class="chip">Ofis</button>
+            <button type="button" class="chip">Kafe / Restoran</button>
+            <button type="button" class="chip">Tadilat</button>
+            <button type="button" class="chip">Diğer</button>
+          </div>
+        </div>
+        <label class="field"><span>Mesajınız</span><textarea name="mesaj" rows="4" required></textarea></label>
+        <div class="form-actions">
+          <button class="btn btn-solid" type="submit" data-magnetic>Mesaj Gönder</button>
+          <button class="btn btn-ghost" type="button" id="waBtn" data-magnetic>WhatsApp ile yaz</button>
+        </div>
+        <p class="form-msg" id="formMsg" role="status"></p>
+      </form>
+      <aside class="info">
+        <div><small>Adres</small><p>Ataşehir, İstanbul<br>Türkiye</p></div>
+        <div><small>Telefon</small><p><a href="tel:+90">+90 5XX XXX XX XX</a></p></div>
+        <div><small>E-posta</small><p><a href="mailto:info@gdmimarlik.com">info@gdmimarlik.com</a></p></div>
+        <div><small>Instagram</small><p><a href="https://www.instagram.com/gdmimarlik/" target="_blank" rel="noopener">@gdmimarlik</a></p></div>
+        <div><small>Çalışma saatleri</small><p>Pazartesi – Cuma 09:00 – 18:00<br>Cumartesi 10:00 – 15:00</p></div>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
