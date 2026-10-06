@@ -37,7 +37,7 @@
   $('#site-header').innerHTML = `
     <a class="skip" href="#main">İçeriğe geç</a>
     <header class="nav" id="nav">
-      <a href="index.html" class="brand" aria-label="GD Mimarlık, ana sayfa"><img src="assets/logo.png" alt=""><span>GD <em>Mimarlık</em></span></a>
+      <a href="index.html" class="brand" aria-label="GD Mimarlık, ana sayfa"><img src="assets/logo-brown.png" alt="GD Mimarlık"></a>
       <nav class="nav-links" aria-label="Ana menü">${NAV.map(l => `<a href="${l[0]}" class="${cur(l)}">${l[1]}</a>`).join('')}</nav>
       <a href="iletisim.html" class="nav-cta">İletişim</a>
       <button class="burger" id="burger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
