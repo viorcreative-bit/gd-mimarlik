@@ -18,19 +18,28 @@
 <div id="site-header"></div>
 <main id="main">
 <span id="top"></span>
-<section class="hero"><div class="hero-card">
-  <video class="hero-media" autoplay muted loop playsinline preload="auto" poster="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2000&q=78"><source src="assets/hero.mp4" type="video/mp4"></video>
-  <div class="hero-body">
-    <p class="eyebrow rise" style="color:#f0d9b8">Mimarlık &amp; İç Mimarlık · İstanbul</p>
-    <h1 class="h1 rise">Doğanın sıcaklığıyla <em>zamansız</em> mekânlar</h1>
-    <p class="hero-sub rise">Villa, ofis, kafe ve restoranlarda fikirden anahtar teslimine, her projeyi bir imza olarak tasarlıyor ve uyguluyoruz.</p>
-    <div class="hero-actions rise"><a href="projeler.html" class="btn btn-light">Projeleri keşfet</a><a href="iletisim.html" class="btn btn-glass">Proje başlat</a></div>
-  </div>
-  <div class="hero-foot">
-    <div class="hero-cap"><h3>Her ayrıntıda özen</h3><p>Planın ilk çizgisinden son teslime, tek ekiple ilerliyoruz.</p></div>
-    <a href="#hikaye" class="scroll-now">Aşağı kaydır <i aria-hidden="true">↓</i></a>
-  </div>
-</div></section>
+<section class="scene" id="scene" aria-label="Evin içine yolculuk">
+  <div class="scene-pin"><div class="stage">
+    <div class="world" id="world"><img src="assets/house.jpg" alt="Katları açık gösterilen örnek ev kesiti, arkasında mimari plan çizimleri" width="2000" height="1328" fetchpriority="high"></div>
+    <div class="scene-shade" id="sceneShade"></div>
+    <div class="scene-intro" id="sceneIntro">
+      <p class="eyebrow rise" style="color:#f0d9b8">Mimarlık &amp; İç Mimarlık · İstanbul</p>
+      <h1 class="h1 rise">Doğanın sıcaklığıyla <em>zamansız</em> mekânlar</h1>
+      <p class="scene-sub rise">Evin içine girin: her katı, her odayı ve her dekorasyon detayını birlikte keşfedelim.</p>
+      <div class="hero-actions rise"><a href="projeler.html" class="btn btn-light">Projeleri keşfet</a><a href="iletisim.html" class="btn btn-glass">Proje başlat</a></div>
+    </div>
+    <div class="room-card" id="roomCard" aria-live="polite">
+      <p class="eyebrow" id="rcEyebrow"></p>
+      <h2 class="rc-title" id="rcTitle"></h2>
+      <p class="rc-text" id="rcText"></p>
+      <ul class="rc-tags" id="rcTags"></ul>
+      <a href="projeler.html" class="btn btn-light rc-cta" id="rcCta" hidden>Projeleri keşfet</a>
+    </div>
+    <ol class="rooms-nav" id="roomsNav" aria-label="Katlar"></ol>
+    <a href="#hikaye" class="scroll-now scene-cue" id="sceneCue">Aşağı kaydır <i aria-hidden="true">↓</i></a>
+    <div class="scene-bar" aria-hidden="true"><span id="sceneBar"></span></div>
+  </div></div>
+</section>
 <section class="stats"><div class="wrap stats-row">
   <div class="stat"><div class="stat-n"><span data-count="12">0</span>+</div><div class="stat-l">Yıllık deneyim</div></div>
   <div class="stat"><div class="stat-n"><span data-count="85">0</span>+</div><div class="stat-l">Tamamlanan proje</div></div>
@@ -92,5 +101,6 @@
 <div id="site-footer"></div>
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
+<script src="js/scene.js"></script>
 </body>
 </html>
