@@ -318,11 +318,11 @@ body.ready .hero .rise:nth-child(3){transition-delay:.24s}
 .scene.static{height:auto}
 .scene-pin{position:sticky;top:0;height:100svh;padding:.8rem}
 .scene.static .scene-pin{position:relative}
-.stage{position:relative;height:100%;border-radius:30px;overflow:hidden;background:#cdc7bb;color:#fff;isolation:isolate}
+.stage{position:relative;height:100%;border-radius:30px;overflow:hidden;background:#15130f;color:#fff;isolation:isolate}
 .world{position:absolute;top:0;left:0;width:2000px;height:1328px;transform-origin:0 0;will-change:transform}
 .world img{width:2000px;height:1328px;max-width:none;display:block}
-.scene-shade{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(270deg,rgba(32,26,21,.72) 0%,rgba(32,26,21,.45) 45%,rgba(32,26,21,.1) 75%),linear-gradient(180deg,rgba(32,26,21,.35),transparent 30%)}
-.scene-intro{position:absolute;z-index:3;top:0;bottom:0;right:clamp(1.4rem,5vw,5rem);width:min(560px,92%);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:0;padding-top:4.5rem}
+.scene-shade{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(10,9,8,.72) 0%,rgba(10,9,8,.4) 40%,rgba(10,9,8,0) 70%),linear-gradient(180deg,rgba(10,9,8,.35),transparent 30%)}
+.scene-intro{position:absolute;z-index:3;top:0;bottom:0;left:clamp(1.4rem,5vw,5rem);width:min(470px,92%);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:0;padding-top:4.5rem}
 .scene-intro .h1{color:#fff;text-wrap:balance}
 .scene-intro .h1 em{color:#f0d9b8}
 .scene-sub{margin-top:1.4rem;color:rgba(255,255,255,.88);font-weight:300;font-size:1.05rem;max-width:460px}

@@ -16,16 +16,16 @@
 
   // rect: görsel koordinatlarında [x, y, genişlik, yükseklik]; pt: işaret noktası; side: kart tarafı
   const ROOMS = [
-    { k: 'Çatı katı', rect: [440, 178, 430, 240], pt: [816, 322], side: 'L', eyebrow: 'Kat 4 · Çatı katı', title: 'Işıkla dolu çalışma odası',
-      text: 'Beyaz tavan, gömme spot aydınlatma ve bitki detayıyla sakin, ferah bir çalışma alanı.', tags: ['Gömme aydınlatma', 'Beyaz tavan', 'Yeşil detay'] },
-    { k: 'Stüdyo', rect: [400, 335, 700, 400], pt: [900, 540], side: 'R', eyebrow: 'Kat 3 · Stüdyo', title: 'Terracotta duvarlı stüdyo',
-      text: 'Sıcak terracotta duvar, endüstriyel ray spotlar ve uzun çalışma masaları. Kalın perdeler akustiği yumuşatır.', tags: ['Terracotta duvar', 'Ray spot', 'Çalışma masası', 'Keten perde'] },
-    { k: 'Salon', rect: [412, 612, 660, 372], pt: [905, 765], side: 'L', eyebrow: 'Kat 2 · Salon & mutfak', title: 'Krem tonlarda açık plan',
-      text: 'Sıcak krem yüzeyler, düşük oturma grubu, sarkıt lambalar ve açık mutfak ile gün boyu ışık alan bir yaşam alanı.', tags: ['Krem palet', 'Sarkıt lamba', 'Açık mutfak', 'Saksı bitki'] },
-    { k: 'Yaşam', rect: [432, 795, 665, 375], pt: [900, 955], side: 'R', eyebrow: 'Kat 1 · Yaşam alanı', title: 'Yeşil duvar, ahşap zemin',
-      text: 'Adaçayı yeşili duvar, koyu ahşap zemin, turuncu sandalyeler ve abajurlarla huzurlu bir akşam köşesi.', tags: ['Adaçayı duvar', 'Koyu ahşap zemin', 'Abajur', 'Turuncu sandalye'] }
+    { k: 'Çatı katı', rect: [735, 105, 590, 255], pt: [836, 282], side: 'L', eyebrow: 'Kat 4 · Çatı katı', title: 'Gece ışığında ana salon',
+      text: 'Gömme spotlar, tavan kornişi ve sıcak abajur ışığıyla akşamları sakin ve davetkar bir yaşam odası.', tags: ['Gömme spot', 'Abajur', 'Altın perde', 'Tavan kornişi'] },
+    { k: 'Mutfak & salon', rect: [605, 352, 810, 240], pt: [1062, 505], side: 'R', eyebrow: 'Kat 3 · Mutfak & salon', title: 'Krem tonlarda açık plan',
+      text: 'Turuncu sandalyeler, sarkıt aydınlatma ve saksı bitkisiyle gün boyu canlı, sıcak bir mutfak ve oturma alanı.', tags: ['Açık mutfak', 'Turuncu sandalye', 'Sarkıt lamba', 'Saksı bitki'] },
+    { k: 'Yemek & oturma', rect: [580, 596, 810, 230], pt: [838, 782], side: 'L', eyebrow: 'Kat 2 · Yemek & oturma', title: 'Bal tonlarında yaşam alanı',
+      text: 'Büyük yemek masası, sarkıt lambalar, koltuk grubu ve zemin lambasıyla aile akşamlarına uygun sıcak bir köşe.', tags: ['Yemek masası', 'Sarkıt lamba', 'Zemin lambası', 'Bal tonu'] },
+    { k: 'Stüdyo', rect: [715, 828, 785, 290], pt: [940, 1010], side: 'R', eyebrow: 'Kat 1 · Stüdyo', title: 'Ray spotlu çalışma stüdyosu',
+      text: 'Endüstriyel ray spotlar, uzun çalışma masaları ve renkli parke zeminle ekibin bir arada çalıştığı ferah alan.', tags: ['Ray spot', 'Parke zemin', 'Çalışma masası', 'Kalın perde'] }
   ];
-  const HOUSE = [350, 150, 790, 900];
+  const HOUSE = [560, 90, 950, 1040];
   const KF = [ // [ilerleme, kamera, oda]
     [0.00, 'full', -1], [0.07, 'full', -1], [0.17, HOUSE, -1],
     [0.24, 0, 0], [0.33, 0, 0],
@@ -46,17 +46,24 @@
     const r = scene.getBoundingClientRect(); start = r.top + scrollY; span = Math.max(1, scene.offsetHeight - vh);
   }
   function cam(k) {
-    if (k === 'full') return { s: Math.max(sw / W, sh / H), cx: portrait ? 760 : 1000, cy: H / 2 };
-    const room = typeof k === 'number' ? ROOMS[k] : null;
-    const [x, y, w, h] = room ? room.rect : k;
-    let s, cx = x + w / 2, cy = y + h / 2;
-    if (room) {
-      if (portrait) { s = sh * 0.4 / h; cy += h * 0.18; }
-      else {
-        s = Math.min(sw * 0.66 / w, sh * 0.72 / h);
-        cx += (room.side === 'L' ? -1 : 1) * (sw * 0.1) / s; // oda karşı tarafa kayar, kart boşluğa girer
-      }
-    } else s = portrait ? Math.min(sw * 0.94 / w, sh * 0.5 / h) : Math.min(sw * 0.84 / w, sh * 0.78 / h);
+    const cover = Math.max(sw / W, sh / H);
+    let s, cx, cy;
+    if (k === 'full') { s = cover * 1.15; cx = portrait ? 1040 : 0; cy = H / 2; }
+    else {
+      const room = typeof k === 'number' ? ROOMS[k] : null;
+      const [x, y, w, h] = room ? room.rect : k;
+      cx = x + w / 2; cy = y + h / 2;
+      if (room) {
+        if (portrait) { s = sh * 0.4 / h; cy += h * 0.18; }
+        else {
+          s = Math.min(sw * 0.58 / w, sh * 0.72 / h);
+          cx += (room.side === 'L' ? -1 : 1) * (sw * 0.1) / s; // oda karşı tarafa kayar, kart boşluğa girer
+        }
+      } else s = portrait ? Math.min(sw * 0.94 / w, sh * 0.5 / h) : Math.min(sw * 0.84 / w, sh * 0.78 / h);
+    }
+    s = Math.max(s, cover); // görselin dışına taşma
+    const hx = sw / 2 / s, hy = sh / 2 / s;
+    cx = Math.min(W - hx, Math.max(hx, cx)); cy = Math.min(H - hy, Math.max(hy, cy));
     return { s, cx, cy };
   }
   const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
