@@ -333,9 +333,9 @@ body.ready .scene .rise:nth-child(2){transition-delay:.12s}
 body.ready .scene .rise:nth-child(3){transition-delay:.22s}
 body.ready .scene .rise:nth-child(4){transition-delay:.32s}
 .scene-cue{position:absolute;z-index:3;right:clamp(1.2rem,3vw,2.4rem);bottom:clamp(1.2rem,3vw,2rem);color:#fff}
-.room-card{position:absolute;z-index:4;left:clamp(1rem,3.5vw,3rem);bottom:clamp(1.6rem,5vw,3.6rem);width:min(430px,calc(100% - 2rem));background:rgba(251,249,245,.84);backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);border:1px solid rgba(255,255,255,.6);border-radius:22px;padding:1.5rem 1.6rem 1.6rem;color:var(--ink);opacity:0;transform:translateY(18px);transition:opacity .5s var(--ease),transform .6s var(--ease);pointer-events:none}
-.room-card.on{opacity:1;transform:none;pointer-events:auto}
-.room-card .eyebrow{margin-bottom:.6rem}
+
+
+.room-card .eyebrow{margin:.4rem 0 0}
 .rc-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.1;margin-bottom:.7rem}
 .rc-text{font-size:.93rem;color:var(--ink2);font-weight:300}
 .rc-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
@@ -365,3 +365,73 @@ body.ready .scene .rise:nth-child(4){transition-delay:.32s}
 
 .rooms-nav{opacity:0;pointer-events:none;transition:opacity .4s}
 .rooms-nav.vis{opacity:1;pointer-events:auto}
+
+/* oda kartı, odak çerçevesi, bağlantı çizgisi */
+.room-card{position:absolute;z-index:6;top:50%;width:min(380px,calc(100% - 2rem));background:rgba(32,26,21,.78);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:1.1rem 1.3rem 1.3rem;color:#fff;opacity:0;transform:translateY(calc(-50% + 16px));transition:opacity .45s var(--ease),transform .55s var(--ease);pointer-events:none}
+.room-card.L{left:clamp(1rem,3vw,2.6rem)}
+.room-card.R{right:clamp(1rem,3vw,2.6rem)}
+.room-card.on{opacity:1;transform:translateY(-50%);pointer-events:auto}
+.rc-top{display:flex;align-items:center;gap:.8rem;margin-bottom:.9rem}
+.rc-brand{font-size:.62rem;letter-spacing:.2em;color:rgba(255,255,255,.55);font-weight:600}
+.rc-count{margin-left:auto;font-size:.7rem;letter-spacing:.1em;color:rgba(255,255,255,.55)}
+.rc-x{width:26px;height:26px;border-radius:50%;font-size:.75rem;color:rgba(255,255,255,.7);display:grid;place-items:center;transition:background .3s}
+.rc-x:hover{background:rgba(255,255,255,.15)}
+.room-card .rc-title{color:#fff;font-size:clamp(1.35rem,2vw,1.8rem);margin-bottom:.2rem}
+.room-card .eyebrow{color:#f0d9b8;font-size:.64rem;margin-bottom:.8rem}
+.room-card .rc-text{color:rgba(255,255,255,.78)}
+.room-card .rc-tags li{background:rgba(255,255,255,.12);color:#f0d9b8}
+.room-card .rc-cta{background:#f0d9b8;color:var(--ink)}
+.room-card .rc-cta:hover{background:#fff}
+.focus-dim{position:absolute;inset:0;z-index:2;opacity:0;pointer-events:none}
+.focus-dim b{position:absolute;background:rgba(32,26,21,.34);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+.focus-frame{position:absolute;top:0;left:0;z-index:3;opacity:0;pointer-events:none;border-radius:18px;box-shadow:0 0 40px rgba(240,217,184,.25),inset 0 0 0 1px rgba(240,217,184,.25)}
+.focus-frame i{position:absolute;width:28px;height:28px;border:2px solid #f0d9b8}
+.focus-frame i:nth-child(1){left:-2px;top:-2px;border-right:0;border-bottom:0;border-top-left-radius:18px}
+.focus-frame i:nth-child(2){right:-2px;top:-2px;border-left:0;border-bottom:0;border-top-right-radius:18px}
+.focus-frame i:nth-child(3){left:-2px;bottom:-2px;border-right:0;border-top:0;border-bottom-left-radius:18px}
+.focus-frame i:nth-child(4){right:-2px;bottom:-2px;border-left:0;border-top:0;border-bottom-right-radius:18px}
+.leader{position:absolute;inset:0;width:100%;height:100%;z-index:5;pointer-events:none;opacity:0;transition:opacity .3s}
+.leader line{stroke:#f0d9b8;stroke-width:1.5}
+.leader circle{fill:none;stroke:#f0d9b8;stroke-width:1.5;opacity:.7}
+.leader #leaderDot{fill:#f0d9b8;stroke:none;opacity:1}
+.leader #leaderRing{animation:ping 1.8s ease-out infinite;transform-origin:center;transform-box:fill-box}
+@keyframes ping{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.7);opacity:0}}
+.scene-cue{position:absolute;z-index:3;left:clamp(1.2rem,3vw,2.4rem);bottom:clamp(1.2rem,3vw,2rem);color:#fff;font-size:.82rem;font-weight:500;display:flex;gap:.6rem;align-items:center}
+.skip-scene{position:absolute;z-index:7;right:clamp(1rem,2.4vw,2rem);bottom:clamp(1.1rem,2.4vw,1.8rem);display:flex;gap:.6rem;align-items:center;padding:.7rem 1.1rem;border-radius:99px;background:rgba(32,26,21,.55);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.22);color:#fff;font-size:.8rem;font-weight:500;transition:background .3s}
+.skip-scene:hover{background:rgba(32,26,21,.8)}
+.rooms-nav{z-index:7}
+@media(max-width:860px){
+  .room-card,.room-card.L,.room-card.R{top:auto;bottom:4.2rem;left:.8rem;right:.8rem;width:auto;transform:translateY(16px)}
+  .room-card.on{transform:none}
+  .focus-dim,.focus-frame,.leader{display:none}
+  .scene-cue{display:flex;bottom:1.1rem}
+  .skip-scene{padding:.55rem .9rem}
+}
+
+/* koyu hizmetler bölümü */
+.svc-dark{position:relative;background:radial-gradient(900px 420px at 50% 0,rgba(169,124,80,.22),transparent 70%),var(--night);color:#f3ece0;margin:.8rem;border-radius:30px;padding:clamp(4rem,9vw,8rem) 0;text-align:center;overflow:hidden}
+.svc-dark .eyebrow{color:#f0d9b8;justify-content:center}
+.svc-dark-title{font-family:var(--serif);font-weight:300;font-size:clamp(2.6rem,7vw,6rem);line-height:1;letter-spacing:-.02em;color:#f6efe2}
+.svc-dark-sub{margin:1.4rem auto 0;max-width:520px;color:rgba(243,236,224,.7);font-weight:300;font-size:1.1rem}
+.svc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:clamp(2.2rem,5vw,4rem);text-align:left}
+.svc-card{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:1.5rem 1.6rem 1.6rem;display:flex;flex-direction:column;gap:.9rem;transition:transform .5s var(--ease),border-color .4s,background .4s}
+.svc-card:hover{transform:translateY(-6px);border-color:rgba(240,217,184,.5)}
+.svc-card small{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:#d9b88a}
+.svc-card .svc-i{width:84px;height:84px;background:rgba(240,217,184,.1);color:#f0d9b8;margin:.6rem auto 1rem;border:1px solid rgba(240,217,184,.25)}
+.svc-card .svc-i svg{width:38px;height:38px}
+.svc-card h3{font-family:var(--serif);font-weight:400;font-size:1.7rem;line-height:1.1}
+.svc-card p{color:rgba(243,236,224,.72);font-weight:300;font-size:.95rem}
+.svc-card ul{display:grid;gap:.4rem;margin:.2rem 0 .6rem}
+.svc-card li{font-size:.86rem;color:rgba(243,236,224,.85);padding-left:1.4rem;position:relative}
+.svc-card li::before{content:'✓';position:absolute;left:0;color:#d9b88a}
+.svc-card .btn{margin-top:auto;justify-content:space-between;border-radius:12px;border:1px solid rgba(255,255,255,.18);color:#f6efe2;background:rgba(255,255,255,.04);padding:.9rem 1.1rem}
+.svc-card .btn:hover{background:#f0d9b8;color:var(--ink)}
+@media(max-width:900px){.svc-cards{grid-template-columns:1fr}}
+
+/* kenarda dikey çağrı sekmesi */
+.edge-tab{position:fixed;right:0;top:50%;z-index:900;transform:translateY(-50%);writing-mode:vertical-rl;background:var(--bronze-d);color:#fff;padding:1.1rem .75rem;border-radius:14px 0 0 14px;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;display:flex;align-items:center;gap:.6rem;transition:background .3s,padding .3s}
+.edge-tab:hover{background:var(--ink);padding-right:1rem}
+@media(max-width:700px){.edge-tab{display:none}}
+.room-card.R{right:clamp(3.4rem,5vw,4.6rem)}
+.rooms-nav button.on{color:transparent}
+.rooms-nav button.on:hover,.rooms-nav button:hover{color:#fff}

@@ -58,6 +58,7 @@
       <div class="f-word" aria-hidden="true">GD Mimarlık</div>
       <div class="f-bot"><span>© ${new Date().getFullYear()} GD Mimarlık. Tüm hakları saklıdır.</span><a href="#top" id="toTop">Yukarı çık ↑</a></div>
     </div></footer>`;
+  if (page !== 'contact') document.body.insertAdjacentHTML('beforeend', '<a class="edge-tab" href="iletisim.html">Ücretsiz keşif <span aria-hidden="true">↗</span></a>');
   $('#toTop').addEventListener('click', e => { e.preventDefault(); scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
   requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add('ready')));
 
@@ -95,6 +96,12 @@
   const svcGrid = $('#svcGrid');
   if (svcGrid) svcGrid.innerHTML = SERVICES.map((s, i) => `
     <div class="svc rv"><span class="svc-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[i]}</svg></span><h3>${s.t}</h3><p>${s.d}</p></div>`).join('');
+  const svcCards = $('#svcCards');
+  if (svcCards) svcCards.innerHTML = SERVICES.slice(0, 3).map((s, i) => `
+    <article class="svc-card rv"><small>0${i + 1} / ${s.t.split(' ')[0]}</small>
+      <span class="svc-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[i]}</svg></span>
+      <h3>${s.t}</h3><p>${s.d}</p><ul>${(s.checks || []).map(c => `<li>${c}</li>`).join('')}</ul>
+      <a class="btn" href="hizmetler.html">Çözümleri incele ${ARROW}</a></article>`).join('');
   const glass = $('#glassGrid');
   if (glass) glass.innerHTML = PROCESS.slice(0, 3).map((s, i) => `<div class="glass rv"><b>0${i + 1}</b><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join('');
   const steps = $('#steps');

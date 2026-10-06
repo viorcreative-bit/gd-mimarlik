@@ -28,15 +28,20 @@
       <p class="scene-sub rise">Evin içine girin: her katı, her odayı ve her dekorasyon detayını birlikte keşfedelim.</p>
       <div class="hero-actions rise"><a href="projeler.html" class="btn btn-light">Projeleri keşfet</a><a href="iletisim.html" class="btn btn-glass">Proje başlat</a></div>
     </div>
+    <div class="focus-dim" id="focusDim" aria-hidden="true"><b></b><b></b><b></b><b></b></div>
+    <div class="focus-frame" id="focusFrame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <svg class="leader" id="leader" aria-hidden="true"><line id="leaderLine" x1="0" y1="0" x2="0" y2="0"/><circle id="leaderRing" r="14"/><circle id="leaderDot" r="5"/></svg>
     <div class="room-card" id="roomCard" aria-live="polite">
-      <p class="eyebrow" id="rcEyebrow"></p>
+      <div class="rc-top"><span class="rc-brand">GD MİMARLIK</span><span class="rc-count" id="rcCount"></span><button type="button" class="rc-x" id="rcClose" aria-label="Kartı kapat">✕</button></div>
       <h2 class="rc-title" id="rcTitle"></h2>
+      <p class="eyebrow" id="rcEyebrow"></p>
       <p class="rc-text" id="rcText"></p>
       <ul class="rc-tags" id="rcTags"></ul>
-      <a href="projeler.html" class="btn btn-light rc-cta" id="rcCta" hidden>Projeleri keşfet</a>
+      <a href="projeler.html" class="btn btn-dark rc-cta" id="rcCta" hidden>Projeleri keşfet</a>
     </div>
     <ol class="rooms-nav" id="roomsNav" aria-label="Katlar"></ol>
-    <a href="#hikaye" class="scroll-now scene-cue" id="sceneCue">Aşağı kaydır <i aria-hidden="true">↓</i></a>
+    <p class="scene-cue" id="sceneCue">Keşfetmek için kaydırın <i aria-hidden="true">↓</i></p>
+    <button type="button" class="skip-scene" id="skipScene">Bölümü geç <i aria-hidden="true">↓</i></button>
     <div class="scene-bar" aria-hidden="true"><span id="sceneBar"></span></div>
   </div></div>
 </section>
@@ -68,11 +73,15 @@
   <div class="mosaic" id="mosaic"></div>
   <div class="more"><a href="projeler.html" class="btn btn-line">Tüm projeleri keşfet</a></div>
 </div></section>
-<section class="sec" style="padding-top:0"><div class="wrap">
-  <div class="sec-head"><div><p class="eyebrow">Hizmetlerimiz</p><h2 class="h2">Sunduğumuz <em>çözümler</em></h2></div><p class="lead">Tasarımdan uygulamaya, mekânınızın ihtiyacı olan her adım tek çatı altında.</p></div>
-
-  <div class="svc-grid" id="svcGrid"></div>
-</div></section>
+<section class="svc-dark" id="hizmetler">
+  <div class="wrap">
+    <p class="eyebrow">Hizmet modeli</p>
+    <h2 class="svc-dark-title">Hizmetlerimiz</h2>
+    <p class="svc-dark-sub">Tek ekip. Tek muhatap.<br>Fikirden teslime uçtan uca çözüm.</p>
+    <div class="svc-cards" id="svcCards"></div>
+    <div class="more"><a href="hizmetler.html" class="btn btn-glass">Tüm hizmetleri incele</a></div>
+  </div>
+</section>
 <section class="glass-sec">
   <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=78" alt="" loading="lazy">
   <div class="wrap">

@@ -74,9 +74,9 @@ window.PROJECTS = [
 ];
 
 window.SERVICES = [
-  { n: '01', t: 'Konut & Villa Tasarımı', d: 'Yaşam alanlarınızı kişiliğinize özel, estetik ve işlevsel mekânlara dönüştürüyoruz.', img: '1600607687939-ce8a6c25118c' },
-  { n: '02', t: 'Ofis & Ticari Alan', d: 'Çalışanların verimliliğini artıran, marka kimliğini yansıtan kurumsal mekânlar tasarlıyoruz.', img: '1497366216548-37526070297c' },
-  { n: '03', t: 'Kafe & Restoran', d: 'Müşteri deneyimini merkeze alan, özgün konsept ve atmosferlerle F&B mekânları oluşturuyoruz.', img: '1517248135467-4c7edcad34c4' },
+  { n: '01', t: 'Konut & Villa Tasarımı', d: 'Yaşam alanlarınızı kişiliğinize özel, estetik ve işlevsel mekânlara dönüştürüyoruz.', img: '1600607687939-ce8a6c25118c', checks: ['Yaşam tarzınıza özel plan', 'Doğal malzeme ve doku'] },
+  { n: '02', t: 'Ofis & Ticari Alan', d: 'Çalışanların verimliliğini artıran, marka kimliğini yansıtan kurumsal mekânlar tasarlıyoruz.', img: '1497366216548-37526070297c', checks: ['Marka kimliğine uygun mekân', 'Verimli çalışma düzeni'] },
+  { n: '03', t: 'Kafe & Restoran', d: 'Müşteri deneyimini merkeze alan, özgün konsept ve atmosferlerle F&B mekânları oluşturuyoruz.', img: '1517248135467-4c7edcad34c4', checks: ['Özgün konsept ve atmosfer', 'Akıcı müşteri deneyimi'] },
   { n: '04', t: 'Proje Yönetimi', d: 'Tasarımdan teslimata kadar tüm süreci şeffaf ve profesyonel biçimde yönetiyoruz.', img: '1503387762-592deb58ef4e' },
   { n: '05', t: '3D Görselleştirme', d: 'Projenizi hayata geçirmeden önce fotorealistik görseller ve sanal tur imkânı sunuyoruz.', img: '1618221195710-dd6b41faaea6' },
   { n: '06', t: 'Tadilat & Dekorasyon', d: 'Mevcut mekânlarınıza yeni bir soluk getiriyor, malzeme seçiminden uygulamaya destek sağlıyoruz.', img: '1600210492493-0946911123ea' }
