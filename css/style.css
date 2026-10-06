@@ -287,7 +287,7 @@ body.ready .hero .rise:nth-child(3){transition-delay:.24s}
 .f-top li{margin-bottom:.5rem;font-size:.93rem}
 .f-top a:hover{color:var(--bronze-d)}
 .f-brand{display:flex;align-items:center;gap:.8rem;font-family:var(--serif);font-size:1.7rem}
-.f-brand img{height:56px;width:auto}
+.f-brand img{height:84px;width:auto}
 .f-word{font-family:var(--serif);font-size:clamp(3.4rem,15vw,13rem);line-height:.85;text-align:center;color:transparent;-webkit-text-stroke:1px rgba(138,90,59,.35);white-space:nowrap;margin-top:2.5rem;user-select:none;overflow:hidden}
 .f-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.8rem;font-size:.8rem;color:var(--mute);border-top:1px solid var(--line);padding-top:1.2rem;margin-top:1.5rem}
 @media(max-width:860px){.f-top{grid-template-columns:1fr 1fr}.f-top>:first-child{grid-column:span 2}}

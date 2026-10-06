@@ -49,7 +49,7 @@
   $('#site-footer').innerHTML = `
     <footer class="footer"><div class="wrap">
       <div class="f-top">
-        <div><div class="f-brand"><img src="assets/logo.png" alt=""><span>GD <em>Mimarlık</em></span></div>
+        <div><a href="index.html" class="f-brand"><img src="assets/logo-brown.png" alt="GD Mimarlık"></a>
           <p>Villa, ofis, kafe, restoran ve daha birçok alanda proje tasarım ve uygulama. Her proje bizim için bir imzadır.</p></div>
         <div><h4>Sayfalar</h4><ul>${[...NAV, ['iletisim.html', 'İletişim']].map(l => `<li><a href="${l[0]}">${l[1]}</a></li>`).join('')}</ul></div>
         <div><h4>Hizmetler</h4><ul>${SERVICES.slice(0, 5).map(s => `<li><a href="hizmetler.html">${s.t}</a></li>`).join('')}</ul></div>
