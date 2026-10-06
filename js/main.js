@@ -32,7 +32,7 @@
   }, true);
 
   /* ── Ortak yerleşim ── */
-  const NAV = [['index.html', 'Ana Sayfa', 'home'], ['projeler.html', 'Projeler', 'projects', 'project'], ['hizmetler.html', 'Hizmetler', 'services'], ['hakkimizda.html', 'Hakkımızda', 'about'], ['haberler.html', 'Günlük', 'news', 'article']];
+  const NAV = [['index.html', 'Ana Sayfa', 'home'], ['projeler.html', 'Projeler', 'projects', 'project'], ['hizmetler.html', 'Hizmetler', 'services'], ['hakkimizda.html', 'Hakkımızda', 'about'], ['haberler.html', 'Blog', 'news', 'article']];
   const cur = l => (l[2] === page || l[3] === page) ? ' current" aria-current="page' : '';
   $('#site-header').innerHTML = `
     <a class="skip" href="#main">İçeriğe geç</a>
