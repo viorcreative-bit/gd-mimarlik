@@ -5,38 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Projelerimiz — GD Mimarlık</title>
 <meta name="description" content="Villa, ofis, kafe ve restoran projelerimiz.">
-<meta name="theme-color" content="#0d0d0c">
+<meta name="theme-color" content="#f7f3ec">
 <meta property="og:title" content="Projelerimiz — GD Mimarlık">
 <meta property="og:description" content="Villa, ofis, kafe ve restoran projelerimiz.">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="projects">
 <div id="site-header"></div>
-<main id="top">
-<section class="page-head">
-  <div class="wrap">
-    <p class="eyebrow">Çalışmalarımız</p>
-    <h1 class="page-title">Projelerimiz</h1>
-    
+<main id="main">
+<span id="top"></span>
+<section class="page-head"><div class="wrap">
+  <p class="crumb"><a href="index.html">Ana Sayfa</a> / Projeler</p>
+  <h1 class="h1">Projelerimiz</h1>
+  <p class="lead">Tamamladığımız ve devam eden çalışmalardan bir seçki.</p>
+</div></section>
+<section class="sec" style="padding-top:1rem"><div class="wrap">
+  <div class="chips" id="filters" role="group" aria-label="Kategori filtresi">
+    <button class="chip active" data-f="all" aria-pressed="true">Tümü</button>
+    <button class="chip" data-f="konut" aria-pressed="false">Konut &amp; Villa</button>
+    <button class="chip" data-f="ofis" aria-pressed="false">Ofis</button>
+    <button class="chip" data-f="fb" aria-pressed="false">Kafe &amp; Restoran</button>
   </div>
-</section>
-<section class="projects wrap">
-  <div class="filters" id="filters" role="tablist" style="margin-bottom:3rem">
-    <button class="chip active" data-f="all">Tümü</button>
-    <button class="chip" data-f="konut">Konut &amp; Villa</button>
-    <button class="chip" data-f="ofis">Ofis</button>
-    <button class="chip" data-f="fb">Kafe &amp; Restoran</button>
-  </div>
-  <div class="proj-grid" id="projGrid"></div>
-</section>
+  <div class="mosaic" id="mosaic"></div>
+</div></section>
 <section class="cta">
-  <div class="wrap cta-in">
-    <h2 class="h2">Projenizi <em>birlikte</em> yapalım.</h2>
-    <a href="iletisim.html" class="btn btn-solid" data-magnetic>İletişime Geçin</a>
+  <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=78" alt="" loading="lazy">
+  <div class="wrap">
+    <p class="eyebrow" style="color:#f0d9b8">Hayalinizi anlatalım</p>
+    <h2 class="h1">Projenizi <em>birlikte</em> yapalım.</h2>
+    <p>Fikriniz ne kadar erken aşamada olursa olsun, bir görüşmeyle başlayabiliriz.</p>
+    <a href="iletisim.html" class="btn btn-light">İletişime geç</a>
   </div>
 </section>
 </main>
