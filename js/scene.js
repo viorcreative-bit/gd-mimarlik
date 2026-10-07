@@ -7,6 +7,7 @@
   const scene = $('scene');
   if (!scene) return;
   const stage = scene.querySelector('.stage');
+  const tabWorld = $('tabWorld'), handWrap = $('handWrap');
   const world = $('world'), shade = $('sceneShade'), intro = $('sceneIntro');
   const card = $('roomCard'), nav = $('roomsNav'), cue = $('sceneCue'), bar = $('sceneBar'), cta = $('rcCta');
   const dim = $('focusDim'), frame = $('focusFrame'), leader = $('leader');
@@ -34,6 +35,46 @@
     [0.74, 3, 3], [0.84, 3, 3],
     [0.93, HOUSE, 4], [1.00, HOUSE, 4]
   ];
+
+  // Tablet fotoğrafı (2000x1358): ekran dörtgeni ve el katmanının konumu
+  const TW = 2000, TH = 1358;
+  const QUAD = [[562, 420], [1058, 380], [1119, 777], [810, 832]]; // sol-üst, sağ-üst, sağ-alt, sol-alt
+  const HAND = [520, 350]; // el katmanının fotoğraftaki sol-üst konumu
+  const PA = 0.2;          // tablet aşamasının toplam kaydırmadaki payı
+
+  // 4 köşe eşlemesinden CSS matrix3d (görsel dikdörtgeni -> ekran dörtgeni)
+  function homography(dst) {
+    const src = [[0, 0], [W, 0], [W, H], [0, H]];
+    const A = [], b = [];
+    for (let i = 0; i < 4; i++) {
+      const [x, y] = src[i], [X, Y] = dst[i];
+      A.push([x, y, 1, 0, 0, 0, -x * X, -y * X]); b.push(X);
+      A.push([0, 0, 0, x, y, 1, -x * Y, -y * Y]); b.push(Y);
+    }
+    for (let i = 0; i < 8; i++) { // Gauss eliminasyonu
+      let m = i; for (let r = i + 1; r < 8; r++) if (Math.abs(A[r][i]) > Math.abs(A[m][i])) m = r;
+      [A[i], A[m]] = [A[m], A[i]]; [b[i], b[m]] = [b[m], b[i]];
+      for (let r = i + 1; r < 8; r++) { const f = A[r][i] / A[i][i]; for (let c = i; c < 8; c++) A[r][c] -= f * A[i][c]; b[r] -= f * b[i]; }
+    }
+    const h = new Array(8);
+    for (let i = 7; i >= 0; i--) { let v = b[i]; for (let c = i + 1; c < 8; c++) v -= A[i][c] * h[c]; h[i] = v / A[i][i]; }
+    return `matrix3d(${h[0]},${h[3]},0,${h[6]},${h[1]},${h[4]},0,${h[7]},0,0,1,0,${h[2]},${h[5]},0,1)`;
+  }
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const smooth = t => { t = Math.min(1, Math.max(0, t)); return t * t * (3 - 2 * t); };
+
+  // tablet fotoğrafı kamerası: ilerleme q (0..1)
+  function tabCam(q) {
+    const cover = Math.max(sw / TW, sh / TH);
+    const s0 = cover * 1.12;
+    const hx0 = sw / 2 / s0, hy0 = sh / 2 / s0;
+    const cx0 = portrait ? 810 : hx0, cy0 = Math.min(TH - hy0, Math.max(hy0, portrait ? hy0 : TH / 2));
+    const qx = (QUAD[0][0] + QUAD[1][0] + QUAD[2][0] + QUAD[3][0]) / 4, qy = (QUAD[0][1] + QUAD[1][1] + QUAD[2][1] + QUAD[3][1]) / 4;
+    const s1 = Math.max(sw / 557, sh / 452) * 1.04;
+    const e = ease(q);
+    const s = Math.exp(Math.log(s0) + (Math.log(s1) - Math.log(s0)) * e);
+    return { s, cx: lerp(cx0, qx, e), cy: lerp(cy0, qy, e) };
+  }
 
   nav.innerHTML = ROOMS.map((r, i) => `<li><button type="button" data-i="${i}" aria-label="${r.eyebrow}"><span>${r.k}</span></button></li>`).join('');
   const tagsEl = $('rcTags');
@@ -91,8 +132,41 @@
     if (i >= 0) setCard(i);
   }
 
+  function phaseA(p) {
+    const q = clamp(p / PA, 0, 1), c = tabCam(q);
+    const tx = sw / 2 - c.cx * c.s, ty = sh / 2 - c.cy * c.s;
+    const tf = `translate3d(${tx}px,${ty}px,0) scale(${c.s})`;
+    tabWorld.style.transform = tf;
+    handWrap.style.transform = `translate3d(${tx + HAND[0] * c.s}px,${ty + HAND[1] * c.s}px,0) scale(${c.s})`;
+    const w = smooth((q - 0.35) / 0.65);
+    // ev katmanının köşeleri: tabletin ekranından, ev sahnesinin ilk görünümüne
+    const fc = cam('full');
+    const fx = sw / 2 - fc.cx * fc.s, fy = sh / 2 - fc.cy * fc.s;
+    const full = [[fx, fy], [fx + W * fc.s, fy], [fx + W * fc.s, fy + H * fc.s], [fx, fy + H * fc.s]];
+    const pts = QUAD.map(([x, y], i) => [lerp(x * c.s + tx, full[i][0], w), lerp(y * c.s + ty, full[i][1], w)]);
+    world.style.transform = homography(pts);
+    tabWorld.style.opacity = 1 - smooth((w - 0.75) / 0.25);
+    tabWorld.style.visibility = tabWorld.style.opacity === '0' ? 'hidden' : 'visible';
+    handWrap.style.opacity = 1 - smooth(w / 0.35);
+    handWrap.style.visibility = handWrap.style.opacity === '0' ? 'hidden' : 'visible';
+    return w;
+  }
+
   function render() {
-    const p = clamp((scrollY - start) / span, 0, 1);
+    const pAll = clamp((scrollY - start) / span, 0, 1);
+    intro.style.opacity = clamp(1 - pAll / 0.045, 0, 1);
+    intro.style.pointerEvents = pAll > 0.035 ? 'none' : 'auto';
+    intro.style.transform = `translateY(${-pAll * 500}px)`;
+    cue.style.opacity = clamp(1 - pAll / 0.03, 0, 1);
+    bar.style.transform = `scaleX(${pAll})`;
+    shade.style.opacity = clamp(1 - pAll / (PA * 0.8), 0, 1);
+    if (pAll < PA) {
+      phaseA(pAll); show(-1);
+      card.classList.remove('on'); frame.style.opacity = 0; dim.style.opacity = 0; leader.style.opacity = 0;
+      return;
+    }
+    if (tabWorld.style.visibility !== 'hidden' || handWrap.style.visibility !== 'hidden') { phaseA(PA); }
+    const p = clamp((pAll - PA) / (1 - PA), 0, 1);
     let a = KF[0], b = KF[KF.length - 1];
     for (let i = 0; i < KF.length - 1; i++) if (p >= KF[i][0] && p <= KF[i + 1][0]) { a = KF[i]; b = KF[i + 1]; break; }
     const t = b[0] === a[0] ? 1 : ease((p - a[0]) / (b[0] - a[0]));
@@ -102,22 +176,15 @@
     const tx = sw / 2 - cx * s, ty = sh / 2 - cy * s;
     cur = { s, tx, ty };
     world.style.transform = `translate3d(${tx}px,${ty}px,0) scale(${s})`;
-    intro.style.opacity = clamp(1 - p / 0.075, 0, 1);
-    intro.style.pointerEvents = p > 0.06 ? 'none' : 'auto';
-    intro.style.transform = `translateY(${-p * 160}px)`;
-    shade.style.opacity = clamp(1 - p / 0.15, 0, 1);
-    cue.style.opacity = clamp(1 - p / 0.05, 0, 1);
-    bar.style.transform = `scaleX(${p})`;
 
     // oda odağı: 1 = tam odakta
     const ra = a[2], rb = b[2];
     let room, f;
     if (ra >= 0 && ra === rb) { room = ra; f = 1; }
-    else if (ra >= 0 && rb >= 0) { room = t > .5 ? rb : ra; f = Math.abs(1 - 2 * t) ; }
+    else if (ra >= 0 && rb >= 0) { room = t > .5 ? rb : ra; f = Math.abs(1 - 2 * t); }
     else if (ra >= 0 && rb < 0) { room = ra; f = 1 - t; }
     else if (rb >= 0 && rb < 4) { room = rb; f = t; }
     else { room = -1; f = 0; }
-    const cardRoom = room === -1 ? (ra === 4 || rb === 4 ? 4 : -1) : room;
     const finalStage = (ra === 4 && rb === 4) || (rb === 4 && t > .5);
     show(finalStage ? 4 : (f > .5 ? room : (room >= 0 && room < 4 && f > .02 ? room : -1)));
     const active = shown;
@@ -131,11 +198,10 @@
       frame.style.cssText = `opacity:${f};transform:translate(${x}px,${y}px);width:${w}px;height:${h}px`;
       dim.style.opacity = f;
       const bs = dim.children, X = Math.max(0, x), Y = Math.max(0, y), X2 = Math.min(sw, x + w), Y2 = Math.min(sh, y + h);
-      const set = (el, l, t, wd, ht) => { el.style.cssText = `left:${l}px;top:${t}px;width:${Math.max(0, wd)}px;height:${Math.max(0, ht)}px`; };
+      const set = (el, l, t2, wd, ht) => { el.style.cssText = `left:${l}px;top:${t2}px;width:${Math.max(0, wd)}px;height:${Math.max(0, ht)}px`; };
       set(bs[0], 0, 0, sw, Y); set(bs[1], 0, Y2, sw, sh - Y2); set(bs[2], 0, Y, X, Y2 - Y); set(bs[3], X2, Y, sw - X2, Y2 - Y);
     } else { frame.style.opacity = 0; dim.style.opacity = 0; }
 
-    // işaret ve bağlantı çizgisi
     if (isRoom && !closed && vis > .55 && !portrait) {
       const pt = ROOMS[active].pt, px = tx + pt[0] * s, py = ty + pt[1] * s;
       const cr = card.getBoundingClientRect(), sr = stage.getBoundingClientRect();
@@ -152,13 +218,11 @@
   nav.addEventListener('click', e => {
     const btn = e.target.closest('button'); if (!btn) return;
     const i = +btn.dataset.i, kf = KF.find(k => k[2] === i);
-    scrollTo({ top: start + span * kf[0] + 2, behavior: reduce ? 'auto' : 'smooth' });
+    scrollTo({ top: start + span * (PA + (1 - PA) * kf[0]) + 2, behavior: reduce ? 'auto' : 'smooth' });
   });
 
   if (reduce) {
-    scene.classList.add('static'); measure();
-    const s = Math.max(sw / W, sh / H);
-    world.style.transform = `translate3d(${(sw - W * s) / 2}px,0,0) scale(${s})`;
+    scene.classList.add('static'); measure(); phaseA(0);
     return;
   }
   let tick = false;
