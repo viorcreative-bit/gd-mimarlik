@@ -141,6 +141,19 @@
       <a class="next" href="haber.html?id=${next.id}"><small>Sonraki yazı</small><div>${next.title}</div></a>`;
   }
 
+  /* ── Video: tıklayınca yüklenir (sayfayı yavaşlatmaz) ── */
+  $$('.video-frame').forEach(fr => {
+    const btn = $('.video-play', fr);
+    btn.addEventListener('click', () => {
+      const f = document.createElement('iframe');
+      f.src = `https://www.youtube-nocookie.com/embed/${fr.dataset.yt}?start=${fr.dataset.start || 0}&autoplay=1&rel=0`;
+      f.title = 'GD Mimarlık tanıtım videosu';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      fr.replaceChildren(f);
+    });
+  });
+
   /* ── Nav, parallax, reveal, sayaç ── */
   const nav = $('#nav'), menu = $('#menu'), burger = $('#burger');
   let lastY = 0, tick = false;

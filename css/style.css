@@ -435,3 +435,17 @@ body.ready .scene .rise:nth-child(4){transition-delay:.32s}
 .room-card.R{right:clamp(3.4rem,5vw,4.6rem)}
 .rooms-nav button.on{color:transparent}
 .rooms-nav button.on:hover,.rooms-nav button:hover{color:#fff}
+
+/* video */
+.video-frame{position:relative;aspect-ratio:16/9;border-radius:var(--r);overflow:hidden;background:var(--night);box-shadow:0 20px 60px rgba(43,36,29,.18)}
+.video-frame iframe,.video-play{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-play{display:block;cursor:pointer;color:#fff}
+.video-play img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),opacity .4s}
+.video-play:hover img{transform:scale(1.04)}
+.video-play::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(32,26,21,.15),rgba(32,26,21,.55))}
+.vp-btn{position:absolute;z-index:2;left:50%;top:50%;width:92px;height:92px;margin:-46px 0 0 -46px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);display:grid;place-items:center;transition:transform .5s var(--ease),background .3s}
+.vp-btn svg{margin-left:4px}
+.video-play:hover .vp-btn{transform:scale(1.08);background:#fff}
+.vp-label{position:absolute;z-index:2;left:50%;bottom:1.6rem;transform:translateX(-50%);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.video-note{margin-top:1rem;text-align:right}
+@media(max-width:700px){.vp-btn{width:68px;height:68px;margin:-34px 0 0 -34px}}
