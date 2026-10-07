@@ -455,9 +455,9 @@ a.video-play{display:block}
 
 /* tablet fotoğrafı ve ekrana oturan ev render'ı */
 .tab-world{position:absolute;top:0;left:0;width:2000px;height:1358px;transform-origin:0 0;will-change:transform,opacity;pointer-events:none}
-.tab-world.tab-hand-wrap{width:660px;height:530px}
+.tab-world.tab-hand-wrap{width:700px;height:550px}
 .tab-photo{width:2000px;height:1358px;max-width:none;display:block}
-.tab-hand{width:660px;height:530px;max-width:none;display:block}
+.tab-hand{width:700px;height:550px;max-width:none;display:block}
 .world{backface-visibility:hidden;z-index:1}
 #tabWorld{z-index:0}
 #handWrap{z-index:2}

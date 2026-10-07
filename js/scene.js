@@ -38,8 +38,8 @@
 
   // Tablet fotoğrafı (2000x1358): ekran dörtgeni ve el katmanının konumu
   const TW = 2000, TH = 1358;
-  const QUAD = [[562, 420], [1058, 380], [1119, 777], [810, 832]]; // sol-üst, sağ-üst, sağ-alt, sol-alt
-  const HAND = [520, 350]; // el katmanının fotoğraftaki sol-üst konumu
+  const QUAD = [[560, 421], [1056, 381], [1147, 747], [699, 856]]; // sol-üst, sağ-üst, sağ-alt, sol-alt
+  const HAND = [500, 350]; // el katmanının fotoğraftaki sol-üst konumu
   const PA = 0.2;          // tablet aşamasının toplam kaydırmadaki payı
 
   // 4 köşe eşlemesinden CSS matrix3d (görsel dikdörtgeni -> ekran dörtgeni)
@@ -70,7 +70,7 @@
     const hx0 = sw / 2 / s0, hy0 = sh / 2 / s0;
     const cx0 = portrait ? 810 : hx0, cy0 = Math.min(TH - hy0, Math.max(hy0, portrait ? hy0 : TH / 2));
     const qx = (QUAD[0][0] + QUAD[1][0] + QUAD[2][0] + QUAD[3][0]) / 4, qy = (QUAD[0][1] + QUAD[1][1] + QUAD[2][1] + QUAD[3][1]) / 4;
-    const s1 = Math.max(sw / 557, sh / 452) * 1.04;
+    const s1 = Math.max(sw / 590, sh / 480) * 1.04;
     const e = ease(q);
     const s = Math.exp(Math.log(s0) + (Math.log(s1) - Math.log(s0)) * e);
     return { s, cx: lerp(cx0, qx, e), cy: lerp(cy0, qy, e) };
