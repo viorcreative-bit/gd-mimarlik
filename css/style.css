@@ -449,3 +449,6 @@ body.ready .scene .rise:nth-child(4){transition-delay:.32s}
 .vp-label{position:absolute;z-index:2;left:50%;bottom:1.6rem;transform:translateX(-50%);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
 .video-note{margin-top:1rem;text-align:right}
 @media(max-width:700px){.vp-btn{width:68px;height:68px;margin:-34px 0 0 -34px}}
+
+.video-note{font-size:.82rem;color:var(--mute)}
+a.video-play{display:block}
