@@ -38,37 +38,37 @@ html,body{width:540px;height:960px;overflow:hidden;background:#15130f;font-famil
 <body>
 <div id="stage"></div>
 <script>
-const IMG = n => `../../assets/${n}`;
+const IMG = n => n.startsWith('img/') ? n : `../../assets/${n}`;
 const REELS = {
   surec: { dur: 16.4, scenes: [
-    { s: 0, e: 2.8, bg: 'hdr-glass.jpg', k: 'title', pre: 'Çalışma şeklimiz', h: 'Fikirden <em>teslime</em>' },
-    { s: 2.8, e: 5.0, bg: 'hdr-studio.jpg', k: 'step', n: '01', h: 'Keşif' },
-    { s: 5.0, e: 7.2, bg: 'hdr-blueprint.jpg', k: 'step', n: '02', h: 'Konsept' },
-    { s: 7.2, e: 9.4, bg: 'house.jpg', k: 'step', n: '03', h: 'Tasarım' },
-    { s: 9.4, e: 11.6, bg: 'hdr-concrete.jpg', k: 'step', n: '04', h: 'Uygulama' },
-    { s: 11.6, e: 13.8, bg: 'tablet.jpg', k: 'step', n: '05', h: 'Teslim' },
+    { s: 0, e: 2.8, bg: 'img/oturma.jpg', k: 'title', pre: 'Çalışma şeklimiz', h: 'Fikirden <em>teslime</em>' },
+    { s: 2.8, e: 5.0, bg: 'img/teras.jpg', k: 'step', n: '01', h: 'Keşif' },
+    { s: 5.0, e: 7.2, bg: 'img/malzeme.jpg', k: 'step', n: '02', h: 'Konsept' },
+    { s: 7.2, e: 9.4, bg: 'img/banyo.jpg', k: 'step', n: '03', h: 'Tasarım' },
+    { s: 9.4, e: 11.6, bg: 'img/tadilat.jpg', k: 'step', n: '04', h: 'Uygulama' },
+    { s: 11.6, e: 13.8, bg: 'img/yatak.jpg', k: 'step', n: '05', h: 'Teslim' },
     { s: 13.8, e: 16.4, k: 'outro', h: 'Evinizi <em>birlikte</em> kuralım' } ] },
   rakam: { dur: 16.2, scenes: [
-    { s: 0, e: 2.6, bg: 'hdr-blueprint.jpg', k: 'title', night: 1, pre: 'Rakamlarla', h: 'GD <em>Mimarlık</em>' },
+    { s: 0, e: 2.6, bg: 'img/tahta.jpg', k: 'title', night: 1, pre: 'Rakamlarla', h: 'GD <em>Mimarlık</em>' },
     { s: 2.6, e: 5.4, k: 'stat', night: 1, to: 12, pre: '+', label: 'Yıllık deneyim' },
     { s: 5.4, e: 8.2, k: 'stat', night: 1, to: 85, pre: '+', label: 'Tamamlanan proje' },
     { s: 8.2, e: 11.0, k: 'stat', night: 1, to: 6, pre: '', label: 'Uzmanlık alanı' },
     { s: 11.0, e: 13.8, k: 'stat', night: 1, to: 100, pre: '%', front: true, label: 'Müşteri memnuniyeti' },
     { s: 13.8, e: 16.2, k: 'outro', h: 'Güven, <em>ayrıntıda</em> gizli' } ] },
   hizmet: { dur: 16.0, scenes: [
-    { s: 0, e: 2.2, bg: 'hdr-concrete.jpg', k: 'title', pre: 'GD Mimarlık', h: '<em>Hizmetlerimiz</em>' },
-    { s: 2.2, e: 4.0, bg: 'house.jpg', k: 'step', n: '01', h: 'Konut &amp; Villa' },
-    { s: 4.0, e: 5.8, bg: 'hdr-studio.jpg', k: 'step', n: '02', h: 'Ofis &amp; Ticari Alan' },
-    { s: 5.8, e: 7.6, bg: 'hdr-glass.jpg', k: 'step', n: '03', h: 'Kafe &amp; Restoran' },
-    { s: 7.6, e: 9.4, bg: 'hdr-blueprint.jpg', k: 'step', n: '04', h: 'Proje Yönetimi' },
-    { s: 9.4, e: 11.2, bg: 'tablet.jpg', k: 'step', n: '05', h: '3D Görselleştirme' },
-    { s: 11.2, e: 13.0, bg: 'hdr-concrete.jpg', k: 'step', n: '06', h: 'Tadilat &amp; Dekorasyon' },
+    { s: 0, e: 2.2, bg: 'img/mutfak.jpg', k: 'title', pre: 'GD Mimarlık', h: '<em>Hizmetlerimiz</em>' },
+    { s: 2.2, e: 4.0, bg: 'img/villa.jpg', k: 'step', n: '01', h: 'Konut &amp; Villa' },
+    { s: 4.0, e: 5.8, bg: 'img/ofis.jpg', k: 'step', n: '02', h: 'Ofis &amp; Ticari Alan' },
+    { s: 5.8, e: 7.6, bg: 'img/restoran.jpg', k: 'step', n: '03', h: 'Kafe &amp; Restoran' },
+    { s: 7.6, e: 9.4, bg: 'img/plan.jpg', k: 'step', n: '04', h: 'Proje Yönetimi' },
+    { s: 9.4, e: 11.2, bg: 'img/render.jpg', k: 'step', n: '05', h: '3D Görselleştirme' },
+    { s: 11.2, e: 13.0, bg: 'img/tadilat.jpg', k: 'step', n: '06', h: 'Tadilat &amp; Dekorasyon' },
     { s: 13.0, e: 16.0, k: 'outro', h: 'Tek ekip, <em>tek muhatap</em>' } ] },
   cagri: { dur: 14.6, scenes: [
-    { s: 0, e: 2.8, bg: 'tablet.jpg', k: 'title', pre: 'Hayalinizdeki mekân', h: 'Hayalinizi <em>anlatın</em>' },
-    { s: 2.8, e: 5.6, bg: 'house.jpg', k: 'title', pre: '', h: 'Biz <em>tasarlayalım</em>' },
-    { s: 5.6, e: 8.4, bg: 'hdr-studio.jpg', k: 'title', pre: '', h: 'Birlikte <em>kuralım</em>' },
-    { s: 8.4, e: 11.2, bg: 'hdr-glass.jpg', k: 'title', pre: 'Ücretsiz keşif', h: 'Ücretsiz <em>keşif</em>' },
+    { s: 0, e: 2.8, bg: 'house.jpg', k: 'title', pre: 'Hayalinizdeki mekân', h: 'Hayalinizi <em>anlatın</em>' },
+    { s: 2.8, e: 5.6, bg: 'img/oturma.jpg', k: 'title', pre: '', h: 'Biz <em>tasarlayalım</em>' },
+    { s: 5.6, e: 8.4, bg: 'img/yatak.jpg', k: 'title', pre: '', h: 'Birlikte <em>kuralım</em>' },
+    { s: 8.4, e: 11.2, bg: 'tablet.jpg', k: 'title', pre: 'Ücretsiz keşif', h: 'Ücretsiz <em>keşif</em>' },
     { s: 11.2, e: 14.6, k: 'outro', h: 'DM ile <em>yazın</em>' } ] },
   tur: { dur: 3, scenes: [ { s: 0, e: 3, k: 'outro', h: 'Evinizi <em>birlikte</em> kuralım' } ] }
 };
@@ -79,7 +79,7 @@ const els = reel.scenes.map((sc, i) => {
   let html = '';
   if (sc.bg) html += `<img class="bg" src="${IMG(sc.bg)}" alt=""><div class="shade"></div>`;
   else html += `<div class="glow"></div>`;
-  if (sc.night) html = `<img class="bg" style="opacity:.16;filter:sepia(.4)" src="${IMG('hdr-blueprint.jpg')}"><div class="glow"></div>`;
+  if (sc.night) html = `<img class="bg" style="opacity:.55" src="${IMG('img/tahta.jpg')}"><div class="glow"></div>`;
   html += `<img class="logo" src="../logo-white.png" alt="">`;
   if (sc.k === 'title') html += `<div class="txt">${sc.pre ? `<div class="pre">${sc.pre}</div>` : ''}<div class="h">${sc.h}</div></div>`;
   if (sc.k === 'step') html += `<div class="txt"><div class="num">${sc.n}</div><div class="h">${sc.h}</div></div>`;
