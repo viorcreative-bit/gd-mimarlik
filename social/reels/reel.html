@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>GD Mimarlık — Reels sahneleri</title>
+<style>
+@font-face{font-family:'Nunito Sans';font-weight:300;font-style:normal;src:url(../fonts/nunito-sans-latin-ext-300-normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Nunito Sans';font-weight:300;font-style:normal;src:url(../fonts/nunito-sans-latin-300-normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Nunito Sans';font-weight:300;font-style:italic;src:url(../fonts/nunito-sans-latin-ext-300-italic.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Nunito Sans';font-weight:300;font-style:italic;src:url(../fonts/nunito-sans-latin-300-italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Nunito Sans';font-weight:600;font-style:normal;src:url(../fonts/nunito-sans-latin-ext-600-normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Nunito Sans';font-weight:600;font-style:normal;src:url(../fonts/nunito-sans-latin-600-normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:540px;height:960px;overflow:hidden;background:#15130f;font-family:'Nunito Sans',sans-serif;color:#fff}
+#stage{position:relative;width:540px;height:960px;overflow:hidden}
+.sc{position:absolute;inset:0;opacity:0;overflow:hidden}
+.bg{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,14,.62) 0%,rgba(20,18,14,.18) 34%,rgba(20,18,14,.35) 62%,rgba(20,18,14,.88) 100%)}
+.shade.flat{background:rgba(20,18,14,.55)}
+.logo{position:absolute;left:50%;top:70px;height:62px;transform:translateX(-50%);opacity:.95}
+.txt{position:absolute;left:36px;right:36px;bottom:230px}
+.pre{font-size:14px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;color:#f0d9b8;margin-bottom:18px}
+.h{font-weight:300;font-size:84px;line-height:1.02;letter-spacing:-.02em}
+.h em{font-style:italic;color:#f0d9b8}
+.num{font-weight:300;font-size:30px;color:#f0d9b8;letter-spacing:.2em;margin-bottom:12px}
+.big{font-weight:300;font-size:210px;line-height:.95;color:#f0d9b8;letter-spacing:-.03em}
+.big small{font-size:90px}
+.lab{font-size:22px;letter-spacing:.26em;text-transform:uppercase;font-weight:600;margin-top:20px}
+.center{position:absolute;left:36px;right:36px;top:50%;transform:translateY(-50%);text-align:center}
+.glow{position:absolute;left:50%;top:-180px;width:900px;height:700px;margin-left:-450px;background:radial-gradient(closest-side,rgba(169,124,80,.5),transparent)}
+.handle{position:absolute;left:0;right:0;bottom:90px;text-align:center;font-size:17px;letter-spacing:.2em;font-weight:600;color:rgba(255,255,255,.75)}
+.prog{position:absolute;left:36px;right:36px;top:44px;display:flex;gap:6px}
+.prog i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.28);overflow:hidden}
+.prog b{display:block;height:100%;width:0;background:#fff}
+.mark{position:absolute;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+const IMG = n => `../../assets/${n}`;
+const REELS = {
+  surec: { dur: 16.4, scenes: [
+    { s: 0, e: 2.8, bg: 'hdr-glass.jpg', k: 'title', pre: 'Çalışma şeklimiz', h: 'Fikirden <em>teslime</em>' },
+    { s: 2.8, e: 5.0, bg: 'hdr-studio.jpg', k: 'step', n: '01', h: 'Keşif' },
+    { s: 5.0, e: 7.2, bg: 'hdr-blueprint.jpg', k: 'step', n: '02', h: 'Konsept' },
+    { s: 7.2, e: 9.4, bg: 'house.jpg', k: 'step', n: '03', h: 'Tasarım' },
+    { s: 9.4, e: 11.6, bg: 'hdr-concrete.jpg', k: 'step', n: '04', h: 'Uygulama' },
+    { s: 11.6, e: 13.8, bg: 'tablet.jpg', k: 'step', n: '05', h: 'Teslim' },
+    { s: 13.8, e: 16.4, k: 'outro', h: 'Evinizi <em>birlikte</em> kuralım' } ] },
+  rakam: { dur: 16.2, scenes: [
+    { s: 0, e: 2.6, bg: 'hdr-blueprint.jpg', k: 'title', night: 1, pre: 'Rakamlarla', h: 'GD <em>Mimarlık</em>' },
+    { s: 2.6, e: 5.4, k: 'stat', night: 1, to: 12, pre: '+', label: 'Yıllık deneyim' },
+    { s: 5.4, e: 8.2, k: 'stat', night: 1, to: 85, pre: '+', label: 'Tamamlanan proje' },
+    { s: 8.2, e: 11.0, k: 'stat', night: 1, to: 6, pre: '', label: 'Uzmanlık alanı' },
+    { s: 11.0, e: 13.8, k: 'stat', night: 1, to: 100, pre: '%', front: true, label: 'Müşteri memnuniyeti' },
+    { s: 13.8, e: 16.2, k: 'outro', h: 'Güven, <em>ayrıntıda</em> gizli' } ] },
+  hizmet: { dur: 16.0, scenes: [
+    { s: 0, e: 2.2, bg: 'hdr-concrete.jpg', k: 'title', pre: 'GD Mimarlık', h: '<em>Hizmetlerimiz</em>' },
+    { s: 2.2, e: 4.0, bg: 'house.jpg', k: 'step', n: '01', h: 'Konut &amp; Villa' },
+    { s: 4.0, e: 5.8, bg: 'hdr-studio.jpg', k: 'step', n: '02', h: 'Ofis &amp; Ticari Alan' },
+    { s: 5.8, e: 7.6, bg: 'hdr-glass.jpg', k: 'step', n: '03', h: 'Kafe &amp; Restoran' },
+    { s: 7.6, e: 9.4, bg: 'hdr-blueprint.jpg', k: 'step', n: '04', h: 'Proje Yönetimi' },
+    { s: 9.4, e: 11.2, bg: 'tablet.jpg', k: 'step', n: '05', h: '3D Görselleştirme' },
+    { s: 11.2, e: 13.0, bg: 'hdr-concrete.jpg', k: 'step', n: '06', h: 'Tadilat &amp; Dekorasyon' },
+    { s: 13.0, e: 16.0, k: 'outro', h: 'Tek ekip, <em>tek muhatap</em>' } ] },
+  cagri: { dur: 14.6, scenes: [
+    { s: 0, e: 2.8, bg: 'tablet.jpg', k: 'title', pre: 'Hayalinizdeki mekân', h: 'Hayalinizi <em>anlatın</em>' },
+    { s: 2.8, e: 5.6, bg: 'house.jpg', k: 'title', pre: '', h: 'Biz <em>tasarlayalım</em>' },
+    { s: 5.6, e: 8.4, bg: 'hdr-studio.jpg', k: 'title', pre: '', h: 'Birlikte <em>kuralım</em>' },
+    { s: 8.4, e: 11.2, bg: 'hdr-glass.jpg', k: 'title', pre: 'Ücretsiz keşif', h: 'Ücretsiz <em>keşif</em>' },
+    { s: 11.2, e: 14.6, k: 'outro', h: 'DM ile <em>yazın</em>' } ] },
+  tur: { dur: 3, scenes: [ { s: 0, e: 3, k: 'outro', h: 'Evinizi <em>birlikte</em> kuralım' } ] }
+};
+const stage = document.getElementById('stage');
+const q = new URLSearchParams(location.search), reel = REELS[q.get('r') || 'surec'];
+const els = reel.scenes.map((sc, i) => {
+  const d = document.createElement('div'); d.className = 'sc';
+  let html = '';
+  if (sc.bg) html += `<img class="bg" src="${IMG(sc.bg)}" alt=""><div class="shade"></div>`;
+  else html += `<div class="glow"></div>`;
+  if (sc.night) html = `<img class="bg" style="opacity:.16;filter:sepia(.4)" src="${IMG('hdr-blueprint.jpg')}"><div class="glow"></div>`;
+  html += `<img class="logo" src="../logo-white.png" alt="">`;
+  if (sc.k === 'title') html += `<div class="txt">${sc.pre ? `<div class="pre">${sc.pre}</div>` : ''}<div class="h">${sc.h}</div></div>`;
+  if (sc.k === 'step') html += `<div class="txt"><div class="num">${sc.n}</div><div class="h">${sc.h}</div></div>`;
+  if (sc.k === 'stat') html += `<div class="center"><div class="big"><span class="v">0</span></div><div class="lab">${sc.label}</div></div>`;
+  if (sc.k === 'outro') html += `<div class="center"><div class="h" style="font-size:78px">${sc.h}</div></div><div class="handle">@gdmimarlik</div>`;
+  d.innerHTML = html; stage.appendChild(d); return d;
+});
+const ease = t => 1 - Math.pow(1 - Math.min(1, Math.max(0, t)), 3);
+const FADE = 0.4;
+window.DUR = reel.dur;
+window.setT = t => {
+  reel.scenes.forEach((sc, i) => {
+    const d = els[i], len = sc.e - sc.s, u = (t - sc.s) / len;
+    let op = 0;
+    if (t >= sc.s - FADE && t <= sc.e + FADE) {
+      const fi = i === 0 ? 1 : Math.min(1, (t - (sc.s - FADE)) / FADE * 1);
+      const fo = i === reel.scenes.length - 1 ? 1 : Math.min(1, ((sc.e + FADE) - t) / FADE);
+      op = Math.max(0, Math.min(fi, fo));
+      if (i === 0 && t < 0.3) op = Math.min(1, t / 0.3 + 0.0);
+    }
+    d.style.opacity = op; d.style.zIndex = Math.round(op * 10 + (t >= sc.s ? 1 : 0));
+    const bg = d.querySelector('.bg'); if (bg && !sc.night) bg.style.transform = `scale(${1 + 0.10 * Math.min(1, Math.max(0, (t - sc.s + FADE) / (len + 2 * FADE)))}) translateY(${-10 * u}px)`;
+    const txt = d.querySelector('.txt, .center');
+    if (txt) { const e = ease((t - sc.s) / 0.7); txt.style.opacity = e; txt.style.transform = `${sc.k === 'stat' || sc.k === 'outro' ? 'translateY(-50%) ' : ''}translateY(${(1 - e) * 36}px)`; }
+    if (sc.k === 'stat') {
+      const c = ease((t - sc.s) / 1.4), v = Math.round(sc.to * c);
+      d.querySelector('.v').innerHTML = sc.front ? `<small>%</small>${v}` : `${v}<small>${sc.pre}</small>`;
+    }
+  });
+};
+window.setT(0);
+</script>
+</body>
+</html>
