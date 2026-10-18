@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>GD Mimarlık — Sosyal Medya Şablonları</title>
+<style>
+/* Yazı tipleri (yerel dosyalar, Türkçe karakter destekli) */
+@font-face{font-family:'Nunito Sans';font-weight:300;font-style:normal;src:url(fonts/nunito-sans-latin-ext-300-normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Nunito Sans';font-weight:300;font-style:normal;src:url(fonts/nunito-sans-latin-300-normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Nunito Sans';font-weight:300;font-style:italic;src:url(fonts/nunito-sans-latin-ext-300-italic.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Nunito Sans';font-weight:300;font-style:italic;src:url(fonts/nunito-sans-latin-300-italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Nunito Sans';font-weight:400;font-style:normal;src:url(fonts/nunito-sans-latin-ext-400-normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Nunito Sans';font-weight:400;font-style:normal;src:url(fonts/nunito-sans-latin-400-normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Nunito Sans';font-weight:400;font-style:italic;src:url(fonts/nunito-sans-latin-ext-400-italic.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Nunito Sans';font-weight:400;font-style:italic;src:url(fonts/nunito-sans-latin-400-italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Nunito Sans';font-weight:600;font-style:normal;src:url(fonts/nunito-sans-latin-ext-600-normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Nunito Sans';font-weight:600;font-style:normal;src:url(fonts/nunito-sans-latin-600-normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-weight:400;src:url(fonts/manrope-latin-ext-400-normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Manrope';font-weight:400;src:url(fonts/manrope-latin-400-normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-weight:600;src:url(fonts/manrope-latin-ext-600-normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Manrope';font-weight:600;src:url(fonts/manrope-latin-600-normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root{--cream:#f7f3ec;--sand:#e6dccb;--ink:#2b241d;--ink2:#5e5347;--bronze:#a97c50;--bronze-d:#8d6339;--gold:#f0d9b8;--night:#201a15;--wood:#8a5a3b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#d9d2c4;font-family:'Manrope',sans-serif;-webkit-font-smoothing:antialiased;padding:40px;display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start}
+em{font-family:'Nunito Sans',sans-serif;font-style:italic;font-weight:300}
+.art{position:relative;overflow:hidden;flex:none;color:var(--ink);font-family:'Manrope',sans-serif}
+.feed{width:1080px;height:1350px}.story{width:1080px;height:1920px}.sq{width:1080px;height:1080px}
+.h{font-family:'Nunito Sans',sans-serif;font-weight:300;letter-spacing:-.02em;line-height:1.02}
+.h em{color:var(--bronze-d)}
+.eyebrow{font-size:25px;letter-spacing:.26em;text-transform:uppercase;font-weight:600;color:var(--bronze-d)}
+.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.logo{position:absolute;height:92px;width:auto}
+.handle{position:absolute;font-size:25px;letter-spacing:.14em;font-weight:600}
+.pill{display:inline-flex;align-items:center;gap:14px;padding:22px 40px;border-radius:99px;font-size:26px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.frame{position:absolute;inset:36px;border:1.5px solid rgba(255,255,255,.35);border-radius:6px;pointer-events:none}
+.shade{position:absolute;inset:0}
+.tag{position:absolute;padding:14px 28px;border-radius:99px;font-size:22px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+
+/* F1 — Proje vitrini */
+#f1{background:#15130f;color:#fff}
+#f1 .photo{height:58%;object-position:50% 30%}
+#f1 .shade{background:linear-gradient(180deg,rgba(20,18,14,.45) 0%,rgba(20,18,14,0) 20%,rgba(20,18,14,0) 40%,#15130f 58%)}
+#f1 .logo{left:70px;top:64px}
+#f1 .tag{right:70px;top:78px;border:1.5px solid rgba(255,255,255,.6);color:#fff;backdrop-filter:blur(8px)}
+#f1 .txt{position:absolute;left:70px;right:70px;bottom:130px}
+#f1 .eyebrow{color:var(--gold);margin-bottom:26px}
+#f1 .h{font-size:122px;color:#fff}#f1 .h em{color:var(--gold)}
+#f1 .meta{display:flex;gap:0;margin-top:44px;border-top:1.5px solid rgba(255,255,255,.3);padding-top:30px}
+#f1 .meta div{flex:1;font-size:26px;color:rgba(255,255,255,.85)}
+#f1 .meta b{display:block;font-family:'Nunito Sans';font-weight:300;font-size:50px;color:#fff;margin-bottom:4px}
+#f1 .handle{left:70px;bottom:56px;color:rgba(255,255,255,.7)}
+
+/* F2 — Alıntı */
+#f2{background:var(--cream)}
+#f2 .logo{left:70px;top:66px}
+#f2 .q{position:absolute;left:70px;right:70px;top:300px}
+#f2 .mark{font-family:'Nunito Sans';font-size:260px;line-height:.6;color:var(--bronze);height:130px;font-weight:300}
+#f2 .h{font-size:92px}
+#f2 .by{margin-top:50px;font-size:26px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--ink2)}
+#f2 .strip{position:absolute;left:0;right:0;bottom:0;height:380px}
+#f2 .strip img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+#f2 .strip::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,var(--cream) 0%,rgba(247,243,236,.0) 55%)}
+#f2 .handle{right:70px;top:90px;color:var(--ink2)}
+
+/* F3 — Hizmet */
+#f3{background:var(--cream)}
+#f3 .logo{left:70px;top:66px}
+#f3 .col{position:absolute;left:70px;top:270px;width:520px}
+#f3 .no{font-family:'Nunito Sans';font-weight:300;font-size:120px;color:var(--bronze);line-height:1}
+#f3 .h{font-size:92px;margin:18px 0 34px}
+#f3 p{font-size:31px;line-height:1.55;color:var(--ink2)}
+#f3 ul{list-style:none;margin-top:40px;display:grid;gap:20px}
+#f3 li{font-size:29px;padding-left:46px;position:relative;font-weight:600}
+#f3 li::before{content:'';position:absolute;left:0;top:12px;width:22px;height:11px;border-left:3px solid var(--bronze);border-bottom:3px solid var(--bronze);transform:rotate(-45deg)}
+#f3 .img{position:absolute;right:70px;top:150px;bottom:150px;width:370px;border-radius:200px 200px 28px 28px;overflow:hidden}
+#f3 .img img{width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+#f3 .pill{position:absolute;left:70px;bottom:70px;background:var(--ink);color:var(--cream)}
+#f3 .handle{right:70px;bottom:70px;color:var(--ink2)}
+
+/* F4 — Rakamlar */
+#f4{background:var(--night);color:#fff}
+#f4 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.12;filter:grayscale(.4) sepia(.3)}
+#f4 .glow{position:absolute;left:50%;top:-200px;width:1200px;height:800px;margin-left:-600px;background:radial-gradient(closest-side,rgba(169,124,80,.45),transparent)}
+#f4 .logo{left:70px;top:66px}
+#f4 .head{position:absolute;left:70px;top:250px}
+#f4 .h{font-size:100px;color:#fff;margin-top:20px}#f4 .h em{color:var(--gold)}
+#f4 .eyebrow{color:var(--gold)}
+#f4 .grid{position:absolute;left:70px;right:70px;bottom:130px;display:grid;grid-template-columns:1fr 1fr;gap:0}
+#f4 .st{padding:46px 0 46px 0;border-top:1.5px solid rgba(255,255,255,.25)}
+#f4 .st:nth-child(even){padding-left:50px;border-left:1.5px solid rgba(255,255,255,.25)}
+#f4 .n{font-family:'Nunito Sans';font-weight:300;font-size:190px;line-height:.95;color:var(--gold)}
+#f4 .n sup{font-size:80px;vertical-align:top;position:relative;top:18px}
+#f4 .l{font-size:28px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:14px;font-weight:600}
+#f4 .handle{left:70px;bottom:56px;color:rgba(255,255,255,.65)}
+
+/* F5 — Blog / ipucu */
+#f5{background:var(--cream)}
+#f5 .logo{left:70px;top:66px}
+#f5 .tag{right:70px;top:80px;background:var(--ink);color:var(--cream)}
+#f5 .tx{position:absolute;left:70px;right:70px;top:260px}
+#f5 .h{font-size:108px;margin-top:26px}
+#f5 .img{position:absolute;left:0;right:0;bottom:0;height:560px;border-radius:70px 70px 0 0;overflow:hidden}
+#f5 .img img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+#f5 .cue{position:absolute;right:70px;bottom:70px;display:flex;align-items:center;gap:20px;color:#fff;font-size:26px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+#f5 .cue i{width:96px;height:96px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);display:grid;place-items:center;font-style:normal;font-size:44px}
+#f5 .img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(32,26,21,.65))}
+#f5 .cue{z-index:2}
+
+/* F6 — CTA */
+#f6{background:linear-gradient(160deg,#b58a5b,#8d6339);color:#fff}
+#f6 .logo{left:70px;top:66px}
+#f6 .circle{position:absolute;right:-150px;bottom:-170px;width:640px;height:640px;border-radius:50%;overflow:hidden;border:10px solid rgba(255,255,255,.25)}
+#f6 .circle img{width:100%;height:100%;object-fit:cover;object-position:55% 40%}
+#f6 .tx{position:absolute;left:70px;top:260px;width:900px}
+#f6 .eyebrow{color:var(--gold)}
+#f6 .h{font-size:136px;color:#fff;margin-top:26px}#f6 .h em{color:var(--gold)}
+#f6 .pill{position:absolute;left:70px;top:900px;background:#fff;color:var(--ink)}
+#f6 .info{position:absolute;left:70px;bottom:70px;font-size:29px;line-height:1.7;font-weight:600}
+#f6 .info span{display:block;color:rgba(255,255,255,.8);font-weight:400;font-size:25px;letter-spacing:.14em;text-transform:uppercase}
+
+/* C1 — Karusel kapağı */
+#c1{background:#15130f;color:#fff}
+#c1 .photo{object-position:50% 50%}
+#c1 .shade{background:linear-gradient(180deg,rgba(20,18,14,.5),rgba(20,18,14,.05) 35%,rgba(20,18,14,.85))}
+#c1 .logo{left:70px;top:64px}
+#c1 .idx{position:absolute;right:70px;top:84px;font-size:26px;letter-spacing:.2em;font-weight:600;color:rgba(255,255,255,.85)}
+#c1 .txt{position:absolute;left:70px;right:70px;bottom:150px}
+#c1 .eyebrow{color:var(--gold)}
+#c1 .h{font-size:150px;color:#fff;margin-top:26px}#c1 .h em{color:var(--gold)}
+#c1 p{font-size:34px;color:rgba(255,255,255,.85);margin-top:30px;max-width:720px;line-height:1.5}
+#c1 .cue{position:absolute;right:70px;bottom:62px;font-size:26px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;display:flex;gap:16px;align-items:center}
+
+/* C2 — Karusel içerik: süreç adımları */
+#c2{background:var(--cream)}
+#c2 .logo{left:70px;top:66px}
+#c2 .idx{position:absolute;right:70px;top:84px;font-size:26px;letter-spacing:.2em;font-weight:600;color:var(--ink2)}
+#c2 .tx{position:absolute;left:70px;right:70px;top:240px}
+#c2 .h{font-size:84px;margin-top:22px}
+#c2 ol{list-style:none;position:absolute;left:70px;right:70px;top:490px;border-top:1.5px solid var(--ink)}
+#c2 li{display:grid;grid-template-columns:110px 1fr;align-items:baseline;padding:22px 0;border-bottom:1.5px solid rgba(43,36,29,.2)}
+#c2 li b{font-family:'Nunito Sans';font-weight:300;font-size:48px;color:var(--bronze-d)}
+#c2 li strong{font-family:'Nunito Sans';font-weight:300;font-size:62px;display:block;line-height:1}
+#c2 li span{font-size:25px;color:var(--ink2);display:block;margin-top:8px}
+#c2 .cue{position:absolute;right:70px;bottom:40px;font-size:26px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--bronze-d)}
+
+/* Hikâyeler */
+.story .safe{position:absolute;inset:250px 70px 340px}
+#s1{background:#15130f;color:#fff}
+#s1 .shade{background:linear-gradient(180deg,rgba(20,18,14,.55),rgba(20,18,14,0) 25%,rgba(20,18,14,0) 50%,rgba(20,18,14,.9))}
+#s1 .logo{left:70px;top:90px}
+#s1 .card{position:absolute;left:70px;right:70px;bottom:330px;background:rgba(251,249,245,.16);border:1.5px solid rgba(255,255,255,.35);backdrop-filter:blur(24px);border-radius:36px;padding:54px}
+#s1 .eyebrow{color:var(--gold)}
+#s1 .h{font-size:104px;color:#fff;margin-top:20px}#s1 .h em{color:var(--gold)}
+#s1 p{font-size:30px;color:rgba(255,255,255,.88);margin-top:26px;line-height:1.5}
+#s1 .sticker{position:absolute;left:50%;bottom:150px;transform:translateX(-50%);background:#fff;color:var(--ink);padding:26px 48px;border-radius:99px;font-size:28px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+#s2{background:var(--cream)}
+#s2 .logo{left:50%;top:260px;transform:translateX(-50%);height:130px}
+#s2 .c{position:absolute;left:70px;right:70px;top:620px;text-align:center}
+#s2 .h{font-size:170px;margin-top:30px}
+#s2 .date{display:inline-block;margin-top:60px;border:2px solid var(--ink);border-radius:99px;padding:22px 48px;font-size:28px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+#s2 .handle{left:0;right:0;text-align:center;bottom:380px;color:var(--ink2)}
+#s2 .ring{position:absolute;left:50%;top:50%;width:1500px;height:1500px;margin:-750px 0 0 -750px;border-radius:50%;border:1.5px solid rgba(169,124,80,.25)}
+#s2 .ring.r2{width:1100px;height:1100px;margin:-550px 0 0 -550px}
+#s3{background:#15130f;color:#fff}
+#s3 .photo{filter:blur(3px) brightness(.55);transform:scale(1.08)}
+#s3 .logo{left:70px;top:90px}
+#s3 .poll{position:absolute;left:70px;right:70px;top:620px;background:#fff;color:var(--ink);border-radius:44px;padding:56px 54px 54px}
+#s3 .poll .eyebrow{font-size:22px}
+#s3 .poll h3{font-family:'Nunito Sans';font-weight:300;font-size:80px;line-height:1.05;margin:20px 0 44px}
+#s3 .opt{display:flex;justify-content:space-between;align-items:center;padding:34px 44px;border-radius:24px;background:var(--cream);font-size:36px;font-weight:600;margin-top:22px;border:2px solid transparent}
+#s3 .opt.sel{background:var(--ink);color:var(--cream)}
+#s3 .opt span{font-weight:400;font-size:30px;opacity:.7}
+#s3 .hint{position:absolute;left:0;right:0;bottom:380px;text-align:center;font-size:28px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.85)}
+#s4{background:var(--night);color:#fff}
+#s4 .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.2;filter:sepia(.4)}
+#s4 .glow{position:absolute;left:50%;top:-300px;width:1500px;height:1100px;margin-left:-750px;background:radial-gradient(closest-side,rgba(169,124,80,.45),transparent)}
+#s4 .logo{left:70px;top:90px}
+#s4 .c{position:absolute;left:70px;right:70px;top:560px}
+#s4 .eyebrow{color:var(--gold)}
+#s4 .h{font-size:160px;color:#fff;margin-top:30px}#s4 .h em{color:var(--gold)}
+#s4 p{font-size:34px;color:rgba(255,255,255,.82);margin-top:40px;max-width:780px;line-height:1.55}
+#s4 .sticker{position:absolute;left:50%;bottom:380px;transform:translateX(-50%);background:var(--gold);color:var(--ink);padding:30px 56px;border-radius:99px;font-size:30px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap}
+#s4 .handle{left:0;right:0;text-align:center;bottom:280px;color:rgba(255,255,255,.7)}
+
+/* Öne çıkan hikâye kapakları */
+.hl{background:var(--cream)}
+.hl .disc{position:absolute;left:50%;top:50%;width:780px;height:780px;margin:-390px 0 0 -390px;border-radius:50%;background:var(--sand);display:grid;place-items:center;border:2px solid rgba(169,124,80,.45)}
+.hl .disc::before{content:'';position:absolute;inset:26px;border-radius:50%;border:1.5px solid rgba(169,124,80,.35)}
+.hl svg{width:340px;height:340px;stroke:var(--bronze-d);fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+/* Profil */
+#pf{background:var(--cream);display:grid;place-items:center}
+#pf::before{content:'';position:absolute;width:960px;height:960px;border-radius:50%;background:radial-gradient(closest-side,#fff,var(--sand));border:2px solid rgba(169,124,80,.35)}
+#pf img{position:relative;z-index:2;width:560px;height:auto;display:block}
+#pf::before{z-index:1}
+</style>
+</head>
+<body>
+
+<!-- ───── FEED ───── -->
+<section class="art feed" id="f1">
+  <img class="photo" src="../assets/house.jpg" alt="">
+  <div class="shade"></div>
+  <img class="logo" src="logo-white.png" alt="">
+  <span class="tag">Yeni proje</span>
+  <div class="txt">
+    <p class="eyebrow">Konut · Beykoz, İstanbul</p>
+    <h2 class="h">Boğaz Manzaralı <em>Villa</em></h2>
+    <div class="meta"><div><b>480 m²</b>Kullanım alanı</div><div><b>14 ay</b>Uygulama süresi</div><div><b>2024</b>Teslim</div></div>
+  </div>
+  <span class="handle">@gdmimarlik</span>
+</section>
+
+<section class="art feed" id="f2">
+  <img class="logo" src="logo-brown.png" alt="">
+  <span class="handle">@gdmimarlik</span>
+  <div class="q"><div class="mark">“</div>
+    <p class="h">Mimarlık, taş ve kereste ile değil; <em>ışık, gölge ve zaman</em> ile inşa edilir.</p>
+    <p class="by">— GD Mimarlık</p></div>
+  <div class="strip"><img src="../assets/hdr-blueprint.jpg" alt=""></div>
+</section>
+
+<section class="art feed" id="f3">
+  <img class="logo" src="logo-brown.png" alt="">
+  <div class="col">
+    <div class="no">01</div>
+    <h2 class="h">Konut &amp; <em>Villa</em> Tasarımı</h2>
+    <p>Yaşam alanlarınızı kişiliğinize özel, estetik ve işlevsel mekânlara dönüştürüyoruz.</p>
+    <ul><li>Yaşam tarzınıza özel plan</li><li>Doğal malzeme ve doku</li><li>Tasarımdan teslime tek ekip</li></ul>
+  </div>
+  <div class="img"><img src="../assets/hdr-concrete.jpg" alt=""></div>
+  <span class="pill">Detaylar için DM</span>
+</section>
+
+<section class="art feed" id="f4">
+  <img class="bg" src="../assets/hdr-blueprint.jpg" alt="">
+  <div class="glow"></div>
+  <img class="logo" src="logo-white.png" alt="">
+  <div class="head"><p class="eyebrow">Rakamlarla</p><h2 class="h">GD <em>Mimarlık</em></h2></div>
+  <div class="grid">
+    <div class="st"><div class="n">12<sup>+</sup></div><div class="l">Yıllık deneyim</div></div>
+    <div class="st"><div class="n">85<sup>+</sup></div><div class="l">Tamamlanan proje</div></div>
+    <div class="st"><div class="n">6</div><div class="l">Uzmanlık alanı</div></div>
+    <div class="st"><div class="n"><span style="font-size:110px">%</span>100</div><div class="l">Müşteri memnuniyeti</div></div>
+  </div>
+  <span class="handle">@gdmimarlik</span>
+</section>
+
+<section class="art feed" id="f5">
+  <img class="logo" src="logo-brown.png" alt="">
+  <span class="tag">İpucu</span>
+  <div class="tx"><p class="eyebrow">Blog · 4 dk okuma</p><h2 class="h">Küçük alanları <em>büyük</em> göstermenin 7 yolu</h2></div>
+  <div class="img"><img src="../assets/hdr-studio.jpg" alt=""></div>
+  <div class="cue">Kaydır <i>→</i></div>
+</section>
+
+<section class="art feed" id="f6">
+  <img class="logo" src="logo-white.png" alt="">
+  <div class="tx"><p class="eyebrow">Hayalinizi anlatalım</p><h2 class="h">Projenizi <em>birlikte</em> yapalım.</h2></div>
+  <span class="pill">Ücretsiz keşif</span>
+  <div class="info"><span>Stüdyo</span>Ataşehir, İstanbul<br><span style="margin-top:14px">Instagram</span>@gdmimarlik</div>
+  <div class="circle"><img src="../assets/house.jpg" alt=""></div>
+</section>
+
+<section class="art feed" id="c1">
+  <img class="photo" src="../assets/hdr-glass.jpg" alt="">
+  <div class="shade"></div>
+  <img class="logo" src="logo-white.png" alt="">
+  <span class="idx">01 / 05</span>
+  <div class="txt"><p class="eyebrow">Çalışma şeklimiz</p><h2 class="h">Fikirden <em>teslime</em></h2><p>Beş net adım, tek muhatap. Süreci kaydırarak inceleyin.</p></div>
+  <div class="cue">Kaydır →</div>
+</section>
+
+<section class="art feed" id="c2">
+  <img class="logo" src="logo-brown.png" alt="">
+  <span class="idx">02 / 05</span>
+  <div class="tx"><p class="eyebrow">Süreç</p><h2 class="h">Beş adımda <em>tek muhatap</em></h2></div>
+  <ol>
+    <li><b>01</b><div><strong>Keşif</strong><span>İhtiyaç, bütçe ve mekânın potansiyeli</span></div></li>
+    <li><b>02</b><div><strong>Konsept</strong><span>Eskiz, malzeme paleti ve mekân kurgusu</span></div></li>
+    <li><b>03</b><div><strong>Tasarım</strong><span>Mimari proje, 3D görseller, uygulama çizimleri</span></div></li>
+    <li><b>04</b><div><strong>Uygulama</strong><span>Şantiye koordinasyonu ve kalite kontrol</span></div></li>
+    <li><b>05</b><div><strong>Teslim</strong><span>Anahtar teslim, kullanıma hazır mekân</span></div></li>
+  </ol>
+  <div class="cue">Kaydır →</div>
+</section>
+
+<!-- ───── HİKÂYE ───── -->
+<section class="art story" id="s1">
+  <img class="photo" src="../assets/hdr-concrete.jpg" alt="" style="object-position:62% 50%">
+  <div class="shade"></div>
+  <img class="logo" src="logo-white.png" alt="">
+  <div class="card"><p class="eyebrow">Ofis · Maslak</p><h2 class="h">Işık ve <em>düzen</em></h2><p>200 kişilik açık ofis planında odak ve iş birliği alanları.</p></div>
+  <span class="sticker">Projeyi incele ↗</span>
+</section>
+
+<section class="art story" id="s2">
+  <div class="ring"></div><div class="ring r2"></div>
+  <img class="logo" src="logo-brown.png" alt="">
+  <div class="c"><p class="eyebrow">Yeni proje</p><h2 class="h">Yeni <em>bir hikâye</em> başlıyor</h2><span class="date">Çok yakında</span></div>
+  <span class="handle">@gdmimarlik</span>
+</section>
+
+<section class="art story" id="s3">
+  <img class="photo" src="../assets/hdr-studio.jpg" alt="">
+  <img class="logo" src="logo-white.png" alt="">
+  <div class="poll"><p class="eyebrow">Anket</p><h3>Hayalinizdeki evde en önemli alan hangisi?</h3>
+    <div class="opt sel">Geniş salon <span>%58</span></div><div class="opt">Çalışma odası <span>%42</span></div></div>
+  <div class="hint">Oyunuzu verin ↑</div>
+</section>
+
+<section class="art story" id="s4">
+  <img class="bg" src="../assets/hdr-blueprint.jpg" alt="">
+  <div class="glow"></div>
+  <img class="logo" src="logo-white.png" alt="">
+  <div class="c"><p class="eyebrow">Ücretsiz keşif</p><h2 class="h">Evinizi <em>birlikte</em> kuralım</h2><p>Kısa bir görüşmeyle fikrinizi netleştirelim, ilk adımı birlikte atalım.</p></div>
+  <span class="sticker">DM ile yazın ↗</span>
+  <span class="handle">@gdmimarlik</span>
+</section>
+
+<!-- ───── ÖNE ÇIKANLAR (6 kapak) ───── -->
+<section class="art story hl" id="h1"><div class="disc"><svg viewBox="0 0 24 24"><path d="M4 20V10l8-6 8 6v10M9 20v-6h6v6M2 20h20"/></svg></div></section>
+<section class="art story hl" id="h2"><div class="disc"><svg viewBox="0 0 24 24"><path d="M14 6l4 4-9 9H5v-4zM12 8l4 4M3 21h8"/></svg></div></section>
+<section class="art story hl" id="h3"><div class="disc"><svg viewBox="0 0 24 24"><path d="M3 18h5v-5h5V8h5V3M3 21h18"/></svg></div></section>
+<section class="art story hl" id="h4"><div class="disc"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5zM8 10h8M8 14h8M8 17h5"/></svg></div></section>
+<section class="art story hl" id="h5"><div class="disc"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-4 3-6.5 7-6.5s7 2.5 7 6.5"/></svg></div></section>
+<section class="art story hl" id="h6"><div class="disc"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 7 8.5-7"/></svg></div></section>
+
+<section class="art sq" id="pf"><img src="logo-brown.png" alt=""></section>
+</body>
+</html>
