@@ -10,7 +10,7 @@
 
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-  const img = (id, w) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=78`;
+  const img = (id, w) => /\//.test(id) ? id : `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=78`;
   const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
   const { PROJECTS, SERVICES, NEWS, PROCESS } = window;
   const page = document.body.dataset.page;
@@ -80,7 +80,7 @@
     <a class="card rv" href="proje.html?id=${pr.id}" data-cat="${pr.cat}" aria-label="${pr.name}">
       ${pr.tag ? `<span class="card-tag">${pr.tag}</span>` : ''}
       <div class="card-img"><img src="${img(pr.img, 1200)}" alt="${pr.name}" loading="lazy"></div>
-      <div class="card-info"><div><div class="card-cat">${pr.catLabel} · ${pr.year}</div><div class="card-name">${pr.name}</div><div class="card-loc">${pr.loc}</div></div><span class="card-go">${ARROW}</span></div>
+      <div class="card-info"><div><div class="card-cat">${pr.catLabel}</div><div class="card-name">${pr.name}</div><div class="card-loc">${pr.loc}</div></div><span class="card-go">${ARROW}</span></div>
     </a>`;
   const newsCard = n => `
     <article class="news rv"><a href="haber.html?id=${n.id}">
@@ -90,7 +90,7 @@
     </a></article>`;
 
   const mosaic = $('#mosaic');
-  if (mosaic) mosaic.innerHTML = PROJECTS.slice(0, +mosaic.dataset.limit || undefined).map(projCard).join('');
+  if (mosaic) mosaic.innerHTML = (mosaic.dataset.limit ? [...PROJECTS].sort((a, b) => (b.feat ? 1 : 0) - (a.feat ? 1 : 0)).slice(0, +mosaic.dataset.limit) : PROJECTS).map(projCard).join('');
   const newsGrid = $('#newsGrid');
   if (newsGrid) newsGrid.innerHTML = (page === 'home' ? NEWS.slice(0, 3) : NEWS).map(newsCard).join('');
   const svcGrid = $('#svcGrid');
@@ -117,7 +117,7 @@
       <section class="d-hero"><img src="${img(pr.img, 2000)}" alt="${pr.name}"><div class="d-hero-t"><p class="eyebrow">${pr.catLabel} · ${pr.loc}</p><h1>${pr.name}</h1></div></section>
       <div class="wrap d-main">
         <div class="d-text"><p class="d-lead">${pr.lead}</p>${pr.body.map(t => `<p>${t}</p>`).join('')}</div>
-        <div class="meta">${[['Konum', pr.loc], ['Alan', pr.area], ['Yıl', pr.year], ['Süre', pr.duration], ['Durum', pr.status], ['Tür', pr.type]].map(([l, v]) => `<div><span>${l}</span><b>${v}</b></div>`).join('')}</div>
+        <div class="meta">${[['Konum', pr.loc], ['Alan', pr.area], ['Yıl', pr.year], ['Süre', pr.duration], ['Durum', pr.status], ['Tür', pr.type]].filter(([, v]) => v).map(([l, v]) => `<div><span>${l}</span><b>${v}</b></div>`).join('')}</div>
       </div>
       <div class="wrap gal">${pr.gallery.map(g => `<img src="${img(g, 1400)}" alt="${pr.name} görseli" loading="lazy">`).join('')}</div>
       <a class="next" href="proje.html?id=${next.id}"><small>Sonraki proje</small><div>${next.name} →</div></a>`;
