@@ -2,10 +2,10 @@
   'use strict';
   // ── Ayarlar ── gerçek iletişim bilgilerini buradan güncelleyin
   const CONFIG = {
-    email: 'info@gdmimarlik.com',
-    phone: '+90 5XX XXX XX XX',
-    address: 'Ataşehir, İstanbul',
-    whatsapp: '' // örn. '905321234567' (başında + olmadan). Boşsa buton e-postaya yönlendirir.
+    email: 'info@gd-mimarlik.com.tr',
+    phone: '+90 530 644 31 00',
+    address: 'Bağcılar, İstanbul',
+    whatsapp: '905306443100' // başında + olmadan
   };
 
   const $ = (s, r = document) => r.querySelector(s);
@@ -56,7 +56,7 @@
         <div><h4>İletişim</h4><ul><li>${CONFIG.address}</li><li><a href="tel:${CONFIG.phone.replace(/\s/g, '')}">${CONFIG.phone}</a></li><li><a href="mailto:${CONFIG.email}">${CONFIG.email}</a></li><li><a href="https://www.instagram.com/gdmimarlik/" target="_blank" rel="noopener">@gdmimarlik</a></li></ul></div>
       </div>
       <div class="f-word" aria-hidden="true">GD Mimarlık</div>
-      <div class="f-bot"><span>© ${new Date().getFullYear()} GD Mimarlık. Tüm hakları saklıdır.</span><a href="#top" id="toTop">Yukarı çık ↑</a></div>
+      <div class="f-bot"><span>© ${new Date().getFullYear()} GD Proje Mimarlık ve Tasarım Ltd. Şti. Tüm hakları saklıdır.</span><a href="#top" id="toTop">Yukarı çık ↑</a></div>
     </div></footer>`;
   if (page !== 'contact') document.body.insertAdjacentHTML('beforeend', '<a class="edge-tab" href="iletisim.html">Ücretsiz keşif <span aria-hidden="true">↗</span></a>');
   $('#toTop').addEventListener('click', e => { e.preventDefault(); scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
