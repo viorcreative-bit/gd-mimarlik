@@ -133,12 +133,35 @@
     const id = Math.max(0, Math.min(NEWS.length - 1, +params.get('id') || 0));
     const n = NEWS[id], next = NEWS[(id + 1) % NEWS.length];
     document.title = `${n.title} — GD Mimarlık`;
-    detail.innerHTML = `<article class="article">
-      <p class="crumb"><a href="haberler.html">← Tüm yazılar</a></p>
-      <span class="news-cat">${n.cat}</span><h1>${n.title}</h1><div class="news-meta">${n.date} · ${n.read} okuma</div>
-      <img src="${img(n.img, 1600)}" alt="">${n.body.map(([t, x]) => t === 'h' ? `<h2>${x}</h2>` : `<p>${x}</p>`).join('')}
-      <p style="margin-top:2rem"><a class="link" href="iletisim.html">Projeniz için yazın ${ARROW}</a></p></article>
-      <a class="next" href="haber.html?id=${next.id}"><small>Sonraki yazı</small><div>${next.title}</div></a>`;
+    const others = NEWS.filter(x => x.id !== n.id).slice(0, 3);
+    detail.innerHTML = `<div class="art-wrap">
+      <header class="art-head">
+        <p class="crumb"><a href="haberler.html">← Tüm yazılar</a></p>
+        <span class="news-cat">${n.cat}</span><h1>${n.title}</h1>
+        <div class="news-meta">${n.date} · ${n.read} okuma</div>
+      </header>
+      <figure class="art-hero"><img src="${img(n.img, 2000)}" alt=""></figure>
+      <div class="art-grid">
+        <article class="article">
+          <p class="art-lead">${n.excerpt}</p>
+          ${n.body.map(([t, x]) => t === 'h' ? `<h2>${x}</h2>` : `<p>${x}</p>`).join('')}
+          <p class="art-end"><a class="link" href="iletisim.html">Projeniz için yazın ${ARROW}</a></p>
+        </article>
+        <aside class="art-side">
+          <div class="side-card">
+            <small>Diğer yazılar</small>
+            ${others.map(o => `<a class="side-post" href="haber.html?id=${o.id}"><img src="${img(o.img, 400)}" alt="" loading="lazy"><span><em>${o.cat}</em>${o.title}</span></a>`).join('')}
+          </div>
+          <div class="side-card side-cta">
+            <small>Projeniz için</small>
+            <p>Fikriniz ne aşamada olursa olsun, bir görüşmeyle başlayalım.</p>
+            <a class="btn btn-dark" href="iletisim.html">İletişime geç</a>
+            <a class="side-tel" href="tel:${CONFIG.phone.replace(/\s/g, '')}">${CONFIG.phone}</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+    <a class="next" href="haber.html?id=${next.id}"><small>Sonraki yazı</small><div>${next.title}</div></a>`;
   }
 
   /* ── Nav, parallax, reveal, sayaç ── */
