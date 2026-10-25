@@ -17,14 +17,14 @@
 
   // rect: görsel koordinatlarında [x, y, genişlik, yükseklik]; pt: işaret noktası; side: kart tarafı
   const ROOMS = [
-    { k: 'Çatı katı', rect: [735, 105, 590, 255], pt: [836, 282], side: 'L', eyebrow: 'Kat 4 · Çatı katı', title: 'Gece ışığında ana salon',
-      text: 'Gömme spotlar, tavan kornişi ve sıcak abajur ışığıyla akşamları sakin ve davetkar bir yaşam odası.', tags: ['Gömme spot', 'Abajur', 'Altın perde', 'Tavan kornişi'] },
-    { k: 'Mutfak & salon', rect: [605, 352, 810, 240], pt: [1062, 505], side: 'R', eyebrow: 'Kat 3 · Mutfak & salon', title: 'Krem tonlarda açık plan',
-      text: 'Turuncu sandalyeler, sarkıt aydınlatma ve saksı bitkisiyle gün boyu canlı, sıcak bir mutfak ve oturma alanı.', tags: ['Açık mutfak', 'Turuncu sandalye', 'Sarkıt lamba', 'Saksı bitki'] },
-    { k: 'Yemek & oturma', rect: [580, 596, 810, 230], pt: [838, 782], side: 'L', eyebrow: 'Kat 2 · Yemek & oturma', title: 'Bal tonlarında yaşam alanı',
-      text: 'Büyük yemek masası, sarkıt lambalar, koltuk grubu ve zemin lambasıyla aile akşamlarına uygun sıcak bir köşe.', tags: ['Yemek masası', 'Sarkıt lamba', 'Zemin lambası', 'Bal tonu'] },
-    { k: 'Stüdyo', rect: [715, 828, 785, 290], pt: [940, 1010], side: 'R', eyebrow: 'Kat 1 · Stüdyo', title: 'Ray spotlu çalışma stüdyosu',
-      text: 'Endüstriyel ray spotlar, uzun çalışma masaları ve renkli parke zeminle ekibin bir arada çalıştığı ferah alan.', tags: ['Ray spot', 'Parke zemin', 'Çalışma masası', 'Kalın perde'] }
+    { k: 'Çatı katı', rect: [735, 105, 590, 255], pt: [836, 282], side: 'L', eyebrow: 'Kat 4 · Çatı katı', title: 'Avizeli klasik salon',
+      text: 'Avize, simetrik oturma grupları ve açık tonlarla klasik çizgide ferah, davetkar bir salon. Alkent 2000 Z. House projemizden.', tags: ['Avize', 'Oturma grubu', 'Klasik çizgi', 'Açık tonlar'] },
+    { k: 'Mutfak', rect: [605, 352, 810, 240], pt: [1062, 505], side: 'R', eyebrow: 'Kat 3 · Mutfak', title: 'Taş tezgâhlı açık mutfak',
+      text: 'Geniş ada, taş tezgâh ve gömme dolaplarla gün ışığını alan, işlevsel ve şık bir mutfak. Kemer Country Su Evleri projemizden.', tags: ['Açık mutfak', 'Taş tezgâh', 'Ada', 'Gömme dolap'] },
+    { k: 'Yemek alanı', rect: [580, 596, 810, 230], pt: [838, 782], side: 'L', eyebrow: 'Kat 2 · Yemek alanı', title: 'Klasik detaylı yemek alanı',
+      text: 'Panelli duvarlar, geniş yemek masası ve dekoratif detaylarla aile akşamlarına uygun zarif bir alan. Akbatı Koru projemizden.', tags: ['Yemek masası', 'Duvar panelleri', 'Aydınlatma', 'Dekoratif detay'] },
+    { k: 'Ofis', rect: [715, 828, 785, 290], pt: [940, 1010], side: 'R', eyebrow: 'Kat 1 · Ofis', title: 'Ahşap tavanlı toplantı odası',
+      text: 'Cam bölmeler, ahşap tavan detayları ve uzun toplantı masasıyla ekibin bir araya geldiği ferah ofis. Antplato Vend projemizden.', tags: ['Toplantı masası', 'Ahşap tavan', 'Cam bölme', 'Bitki'] }
   ];
   const HOUSE = [560, 90, 950, 1040];
   const KF = [ // [ilerleme, kamera, oda]
