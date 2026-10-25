@@ -17,14 +17,14 @@
 
   // rect: görsel koordinatlarında [x, y, genişlik, yükseklik]; pt: işaret noktası; side: kart tarafı
   const ROOMS = [
-    { k: 'Çatı katı', rect: [735, 105, 590, 255], pt: [836, 282], side: 'L', eyebrow: 'Kat 4 · Çatı katı', title: 'Avizeli klasik salon',
+    { k: 'Çatı katı', rect: [735, 105, 590, 255], pt: [1030, 288], side: 'L', eyebrow: 'Kat 4 · Çatı katı', title: 'Avizeli klasik salon',
       text: 'Avize, simetrik oturma grupları ve açık tonlarla klasik çizgide ferah, davetkar bir salon. Alkent 2000 Z. House projemizden.', tags: ['Avize', 'Oturma grubu', 'Klasik çizgi', 'Açık tonlar'] },
-    { k: 'Mutfak', rect: [605, 352, 810, 240], pt: [1062, 505], side: 'R', eyebrow: 'Kat 3 · Mutfak', title: 'Taş tezgâhlı açık mutfak',
+    { k: 'Mutfak', rect: [605, 352, 810, 240], pt: [1040, 530], side: 'R', eyebrow: 'Kat 3 · Mutfak', title: 'Taş tezgâhlı açık mutfak',
       text: 'Geniş ada, taş tezgâh ve gömme dolaplarla gün ışığını alan, işlevsel ve şık bir mutfak. Kemer Country Su Evleri projemizden.', tags: ['Açık mutfak', 'Taş tezgâh', 'Ada', 'Gömme dolap'] },
-    { k: 'Yemek alanı', rect: [580, 596, 810, 230], pt: [838, 782], side: 'L', eyebrow: 'Kat 2 · Yemek alanı', title: 'Klasik detaylı yemek alanı',
+    { k: 'Yemek alanı', rect: [580, 596, 810, 230], pt: [1080, 760], side: 'L', eyebrow: 'Kat 2 · Yemek alanı', title: 'Klasik detaylı yemek alanı',
       text: 'Panelli duvarlar, geniş yemek masası ve dekoratif detaylarla aile akşamlarına uygun zarif bir alan. Akbatı Koru projemizden.', tags: ['Yemek masası', 'Duvar panelleri', 'Aydınlatma', 'Dekoratif detay'] },
-    { k: 'Ofis', rect: [715, 828, 785, 290], pt: [940, 1010], side: 'R', eyebrow: 'Kat 1 · Ofis', title: 'Ahşap tavanlı toplantı odası',
-      text: 'Cam bölmeler, ahşap tavan detayları ve uzun toplantı masasıyla ekibin bir araya geldiği ferah ofis. Antplato Vend projemizden.', tags: ['Toplantı masası', 'Ahşap tavan', 'Cam bölme', 'Bitki'] }
+    { k: 'Ofis', rect: [715, 828, 785, 290], pt: [1158, 1035], side: 'R', eyebrow: 'Kat 1 · Ofis', title: 'Cam bölmeli toplantı odası',
+      text: 'Cam bölmeler, uzun toplantı masası ve ahşap dolap detaylarıyla ekibin bir araya geldiği ferah ofis. Antplato Vend projemizden.', tags: ['Toplantı masası', 'Cam bölme', 'Ahşap dolap', 'Bitki'] }
   ];
   const HOUSE = [560, 90, 950, 1040];
   const KF = [ // [ilerleme, kamera, oda]
