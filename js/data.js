@@ -158,7 +158,7 @@ window.SERVICES = [
 
 window.NEWS = [
   {
-    id: 0, cat: 'Tasarım Trendleri', date: '15 Mart 2025', read: '5 dk', img: '1503387762-592deb58ef4e',
+    id: 0, cat: 'Tasarım Trendleri', date: '15 Mart 2025', read: '5 dk', img: 'assets/projects/guzellik-nisantasi/04.jpg',
     title: '2025 Mimari Tasarım Trendleri: Doğallık ve Sürdürülebilirlik Ön Planda',
     excerpt: 'Bu yıl mimarlık dünyasında doğal malzemeler, biyofilik tasarım ve sürdürülebilir çözümler öne çıkıyor.',
     body: [
@@ -182,7 +182,7 @@ window.NEWS = [
     ]
   },
   {
-    id: 2, cat: 'İpuçları', date: '18 Şubat 2025', read: '4 dk', img: '1524758631624-e2822e304c36',
+    id: 2, cat: 'İpuçları', date: '18 Şubat 2025', read: '4 dk', img: 'assets/projects/halkali-tema/03.jpg',
     title: 'Küçük Alanları Büyük Göstermenin 7 Yolu',
     excerpt: 'Sınırlı metrekareleri ferah ve işlevsel mekânlara dönüştüren pratik mimari çözümler.',
     body: [
