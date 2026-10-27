@@ -21,7 +21,13 @@
 <div id="detail"></div>
 </main>
 <div id="site-footer"></div>
-<div class="lightbox" id="lightbox" aria-hidden="true"><img alt="" id="lightboxImg"></div>
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Görsel büyütme">
+  <button type="button" class="lb-btn lb-close" id="lbClose" aria-label="Kapat">✕</button>
+  <button type="button" class="lb-btn lb-prev" id="lbPrev" aria-label="Önceki görsel">‹</button>
+  <img alt="" id="lightboxImg">
+  <button type="button" class="lb-btn lb-next" id="lbNext" aria-label="Sonraki görsel">›</button>
+  <span class="lb-count" id="lbCount"></span>
+</div>
 <script src="js/data.js"></script>
 <script src="js/main.js"></script>
 </body>
