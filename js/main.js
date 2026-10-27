@@ -126,13 +126,34 @@
           <div class="ba-grid" style="--n:${list.length < 3 ? list.length : 3}">${list.map(g => `<img src="${img(g, 1400)}" alt="${pr.name} – ${t.toLowerCase()}" loading="lazy">`).join('')}</div>`).join('')}</div>`;
       })()}
       <a class="next" href="proje.html?id=${next.id}"><small>Sonraki proje</small><div>${next.name} →</div></a>`;
-    const lb = $('#lightbox');
+    const lb = $('#lightbox'), lbImg = $('#lightboxImg'), lbCount = $('#lbCount');
+    let shots = [], cur = 0, tx = 0;
+    const show = i => {
+      cur = (i + shots.length) % shots.length;
+      lbImg.src = shots[cur].src.replace(/w=\d+/, 'w=2200');
+      lbCount.textContent = `${cur + 1} / ${shots.length}`;
+    };
+    const closeLb = () => { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
     detail.addEventListener('click', e => {
       const g = e.target.closest('.gal img, .ba-grid img'); if (!g) return;
-      $('#lightboxImg').src = g.src.replace(/w=\d+/, 'w=2200'); lb.classList.add('open');
+      shots = [...detail.querySelectorAll('.gal img, .ba-grid img')];
+      show(shots.indexOf(g));
+      lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
     });
-    lb.addEventListener('click', () => lb.classList.remove('open'));
-    addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
+    lb.addEventListener('click', e => {
+      if (e.target.closest('#lbPrev')) return show(cur - 1);
+      if (e.target.closest('#lbNext')) return show(cur + 1);
+      if (e.target.closest('#lightboxImg')) return;
+      closeLb();
+    });
+    lb.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1)); }, { passive: true });
+    addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLb();
+      else if (e.key === 'ArrowRight') show(cur + 1);
+      else if (e.key === 'ArrowLeft') show(cur - 1);
+    });
   }
   if (detail && page === 'article') {
     const id = Math.max(0, Math.min(NEWS.length - 1, +params.get('id') || 0));
