@@ -501,14 +501,15 @@ a.video-play{display:block}
   .news-grid.feat .news:first-child .news-ex{font-size:1.05rem}
 }
 
-/* ── Proje detay: önce / sonra ── */
+/* ── Proje detay: önce / tasarım / sonra ── */
 .ba{padding-bottom:3rem}
-.ba-h{display:flex;align-items:baseline;gap:1rem;font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,3vw,2.4rem);margin:2.4rem 0 1.1rem;padding-bottom:.8rem;border-bottom:1px solid rgba(0,0,0,.1)}
+.ba-h{display:flex;align-items:baseline;gap:1rem;font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,3vw,2.4rem);margin:2.6rem 0 1.1rem;padding-bottom:.8rem;border-bottom:1px solid rgba(0,0,0,.1)}
+.ba-h:first-child{margin-top:0}
 .ba-h small{font-family:var(--sans);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);font-weight:600}
-.ba-h.after span{color:var(--bronze-d)}
-.ba-grid{display:grid;grid-template-columns:repeat(var(--n,3),1fr);gap:.8rem}
-.ba-grid img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r);cursor:zoom-in;background:var(--sand);transition:transform .6s var(--ease)}
+.ba-h em{margin-left:auto;font-family:var(--sans);font-style:normal;font-size:.78rem;color:var(--mute);font-weight:400}
+.ba-h.sonra span{color:var(--bronze-d)}
+.ba-grid{column-count:var(--n,3);column-gap:.8rem}
+.ba-grid img{display:block;width:100%;height:auto;margin:0 0 .8rem;break-inside:avoid;border-radius:var(--r);cursor:zoom-in;background:var(--sand);transition:transform .6s var(--ease)}
 .ba-grid img:hover{transform:scale(.99)}
-.ba-h.before + .ba-grid img{filter:saturate(.75)}
-.ba-h.before{margin-top:0}
-@media(max-width:860px){.ba-grid{grid-template-columns:1fr 1fr}}
+.ba-h.once + .ba-grid img{filter:saturate(.8)}
+@media(max-width:860px){.ba-grid{column-count:2}.ba-h small{display:none}}
