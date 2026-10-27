@@ -123,7 +123,7 @@
         const secs = [['once', 'Önce', 'Çalışma öncesi hâli', pr.once || pr.before], ['render', 'Tasarım', '3D tasarım çalışması', pr.render], ['sonra', 'Sonra', 'Uygulama sonrası', pr.sonra || (pr.before ? pr.gallery : null)]].filter(s => s[3] && s[3].length);
         if (!secs.length) return `<div class="wrap gal">${pr.gallery.map(g => `<img src="${img(g, 1400)}" alt="${pr.name} görseli" loading="lazy">`).join('')}</div>`;
         return `<div class="wrap ba">${secs.map(([k, t, s, list]) => `<h2 class="ba-h ${k}"><span>${t}</span><small>${s}</small><em>${list.length} görsel</em></h2>
-          <div class="ba-grid" style="--n:${list.length < 3 ? list.length : 3}">${list.map(g => `<img src="${img(g, 1400)}" alt="${pr.name} – ${t.toLowerCase()}" loading="lazy">`).join('')}</div>`).join('')}</div>`;
+          <div class="ba-grid" style="--n:${list.length < 4 ? list.length : 4}">${list.map(g => `<img src="${img(g, 1400)}" alt="${pr.name} – ${t.toLowerCase()}" loading="lazy">`).join('')}</div>`).join('')}</div>`;
       })()}
       <a class="next" href="proje.html?id=${next.id}"><small>Sonraki proje</small><div>${next.name} →</div></a>`;
     const lb = $('#lightbox'), lbImg = $('#lightboxImg'), lbCount = $('#lbCount');
