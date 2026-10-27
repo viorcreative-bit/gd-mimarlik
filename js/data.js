@@ -20,10 +20,11 @@ window.PROJECTS = [
   {
     id: 2, cat: "konut", catLabel: "Konut", tag: '',
     name: "Ataköy Konakları – 1. Ev", loc: "Ataköy, İstanbul", type: "Rezidans Dairesi",
-    img: "assets/projects/atakoy-konaklari-1/02.jpg",
-    lead: "Islak hacimleri ve koridorlarıyla sade, sıcak ve işlevsel bir rezidans daire uygulaması.",
-    body: ["Ataköy Konakları – 1. Ev, GD Mimarlık imzasıyla tasarlanmış ve hayata geçirilmiş bir rezidans dairesi projesidir. Aşağıdaki galeriden projenin farklı mekânlarını inceleyebilirsiniz."],
-    gallery: ["assets/projects/atakoy-konaklari-1/02.jpg", "assets/projects/atakoy-konaklari-1/01.jpg", "assets/projects/atakoy-konaklari-1/03.jpg", "assets/projects/atakoy-konaklari-1/04.jpg", "assets/projects/atakoy-konaklari-1/05.jpg", "assets/projects/atakoy-konaklari-1/06.jpg"]
+    img: "assets/projects/atakoy-konaklari-1/03.jpg",
+    lead: "Eski seramikli banyo ve koridorların baştan tasarlandığı, küvetli banyosu ve ahşap detaylarıyla yenilenen rezidans daire.",
+    body: ["Ataköy Konakları'ndaki bu dairede banyolar ve koridor baştan yenilendi. Eski kahverengi seramikler ve dar, yıpranmış hacimler; açık tonlu kaplamalar, bakır-altın armatürler, ahşap lavabo dolabı ve ayaklı küvetle sıcak ve sade bir banyoya dönüştü.","Aşağıda projenin sonrasını, hemen altında ise yenileme öncesi hâlini görebilirsiniz."],
+    gallery: ["assets/projects/atakoy-konaklari-1/03.jpg", "assets/projects/atakoy-konaklari-1/05.jpg", "assets/projects/atakoy-konaklari-1/06.jpg", "assets/projects/atakoy-konaklari-1/08.jpg", "assets/projects/atakoy-konaklari-1/09.jpg"],
+    before: ["assets/projects/atakoy-konaklari-1/02.jpg", "assets/projects/atakoy-konaklari-1/07.jpg", "assets/projects/atakoy-konaklari-1/04.jpg", "assets/projects/atakoy-konaklari-1/01.jpg"]
   },
   {
     id: 3, cat: "konut", catLabel: "Konut", tag: '',

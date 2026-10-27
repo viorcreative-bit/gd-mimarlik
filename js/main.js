@@ -119,11 +119,16 @@
         <div class="d-text"><p class="d-lead">${pr.lead}</p>${pr.body.map(t => `<p>${t}</p>`).join('')}</div>
         <div class="meta">${[['Konum', pr.loc], ['Alan', pr.area], ['Yıl', pr.year], ['Süre', pr.duration], ['Durum', pr.status], ['Tür', pr.type]].filter(([, v]) => v).map(([l, v]) => `<div><span>${l}</span><b>${v}</b></div>`).join('')}</div>
       </div>
-      <div class="wrap gal">${pr.gallery.map(g => `<img src="${img(g, 1400)}" alt="${pr.name} görseli" loading="lazy">`).join('')}</div>
+      ${pr.before ? `<div class="wrap ba">
+        <h2 class="ba-h after"><span>Sonra</span><small>Yenilenmiş hâli</small></h2>
+        <div class="ba-grid">${pr.gallery.map(g => `<img src="${img(g, 1400)}" alt="${pr.name} – sonrası" loading="lazy">`).join('')}</div>
+        <h2 class="ba-h before"><span>Önce</span><small>Yenileme öncesi hâli</small></h2>
+        <div class="ba-grid">${pr.before.map(g => `<img src="${img(g, 1400)}" alt="${pr.name} – öncesi" loading="lazy">`).join('')}</div>
+      </div>` : `<div class="wrap gal">${pr.gallery.map(g => `<img src="${img(g, 1400)}" alt="${pr.name} görseli" loading="lazy">`).join('')}</div>`}
       <a class="next" href="proje.html?id=${next.id}"><small>Sonraki proje</small><div>${next.name} →</div></a>`;
     const lb = $('#lightbox');
     detail.addEventListener('click', e => {
-      const g = e.target.closest('.gal img'); if (!g) return;
+      const g = e.target.closest('.gal img, .ba-grid img'); if (!g) return;
       $('#lightboxImg').src = g.src.replace(/w=\d+/, 'w=2200'); lb.classList.add('open');
     });
     lb.addEventListener('click', () => lb.classList.remove('open'));
