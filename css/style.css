@@ -506,7 +506,7 @@ a.video-play{display:block}
 .ba-h{display:flex;align-items:baseline;gap:1rem;font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,3vw,2.4rem);margin:2.4rem 0 1.1rem;padding-bottom:.8rem;border-bottom:1px solid rgba(0,0,0,.1)}
 .ba-h small{font-family:var(--sans);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);font-weight:600}
 .ba-h.after span{color:var(--bronze-d)}
-.ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.ba-grid{display:grid;grid-template-columns:repeat(var(--n,3),1fr);gap:.8rem}
 .ba-grid img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r);cursor:zoom-in;background:var(--sand);transition:transform .6s var(--ease)}
 .ba-grid img:hover{transform:scale(.99)}
 .ba-h.before + .ba-grid img{filter:saturate(.75)}
