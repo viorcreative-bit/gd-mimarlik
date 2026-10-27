@@ -510,4 +510,5 @@ a.video-play{display:block}
 .ba-grid img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r);cursor:zoom-in;background:var(--sand);transition:transform .6s var(--ease)}
 .ba-grid img:hover{transform:scale(.99)}
 .ba-h.before + .ba-grid img{filter:saturate(.75)}
+.ba-h.before{margin-top:0}
 @media(max-width:860px){.ba-grid{grid-template-columns:1fr 1fr}}
