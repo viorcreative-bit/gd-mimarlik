@@ -520,3 +520,39 @@ a.video-play{display:block}
 .ba-grid img:hover{transform:scale(.99)}
 .ba-h.once + .ba-grid img{filter:saturate(.8)}
 @media(max-width:860px){.ba-grid{grid-template-columns:repeat(2,1fr)}.ba-h small{display:none}}
+
+/* ── Marka vurguları: logo moru + altın ── */
+:root{--purple:#634392;--purple-d:#4d3377;--purple-l:#b79de0;--gold:#c9a64a;--gold-d:#9a7b2c;--gold-l:#ecd48c}
+::selection{background:var(--purple);color:#fff}
+:focus-visible{outline-color:var(--purple)}
+.field input:focus,.field textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(99,67,146,.18)}
+.eyebrow{color:var(--purple)}
+.eyebrow::before{content:'';display:inline-block;width:26px;height:1.5px;background:var(--gold);margin-right:.7rem;vertical-align:middle;transform:translateY(-1px)}
+.svc-dark .eyebrow::before,.cta .eyebrow::before{display:none}
+.hero .eyebrow,.glass-sec .eyebrow,.cta .eyebrow,.scene-intro .eyebrow,.d-hero-t .eyebrow,.room-card .eyebrow,.svc-dark .eyebrow,.page-head.has-bg .eyebrow{color:var(--gold-l)!important}
+.h2 em,.h1 em{color:var(--purple)}
+.hero .h1 em,.glass-sec .h2 em,.cta .h1 em,.page-head.has-bg .h1 em,.scene-intro .h1 em,.svc-dark em{color:var(--gold-l)}
+.news-cat,.card-cat,.info-card small,.side-card small,.next small,.f-top h4,.step-n,.glass b,.link:hover,.menu nav a:hover,.crumb a:hover,.info-card a:hover,.f-top a:hover,.side-post:hover span,.next:hover div,.form-msg{color:var(--purple)}
+.glass b{color:var(--purple-d)}
+.btn-dark:hover{background:var(--purple)}
+.stat-n{color:var(--purple)}
+.stat{position:relative}
+.stat::after{content:'';display:block;width:28px;height:2px;background:var(--gold);margin:.9rem auto 0}
+.d-lead,.art-lead{border-left:3px solid var(--gold);padding-left:1.1rem}
+.meta{box-shadow:inset 0 3px 0 var(--gold)}
+.meta span{color:var(--purple)}
+.ba-h{border-bottom:0;position:relative;padding-bottom:.9rem}
+.ba-h::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1.5px;background:linear-gradient(90deg,var(--gold),rgba(201,166,74,.15) 70%,transparent)}
+.ba-h.sonra span{color:var(--purple)}
+.ba-h.render span{color:var(--ink)}
+.ba-h em{color:var(--gold-d)}
+.side-card{box-shadow:inset 0 2px 0 var(--gold)}
+.side-cta .btn-dark{background:var(--purple)}
+.side-cta .btn-dark:hover{background:var(--purple-d)}
+.card:hover .card-go{background:var(--gold);color:#fff;border-color:var(--gold)}
+.lb-count{color:var(--gold-l)}
+.lb-btn{border-color:rgba(236,212,140,.45)}
+.lb-btn:hover{background:rgba(236,212,140,.25)}
+.f-top{border-top:0}
+.f-top h4{position:relative;padding-bottom:.7rem}
+.f-top h4::after{content:'';position:absolute;left:0;bottom:0;width:22px;height:1.5px;background:var(--gold)}
