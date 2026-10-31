@@ -556,3 +556,11 @@ a.video-play{display:block}
 .f-top{border-top:0}
 .f-top h4{position:relative;padding-bottom:.7rem}
 .f-top h4::after{content:'';position:absolute;left:0;bottom:0;width:22px;height:1.5px;background:var(--gold)}
+
+/* ── Oda bilgi kutuları: şeffaf mor ── */
+.room-card{background:linear-gradient(155deg,rgba(104,70,156,.66),rgba(62,38,102,.7));border-color:rgba(236,212,140,.38);box-shadow:0 18px 50px rgba(30,16,56,.38),inset 0 1px 0 rgba(255,255,255,.14)}
+.room-card .rc-text{color:rgba(255,255,255,.88)}
+.room-card .rc-brand{color:var(--gold-l)}
+.room-card .rc-tags li{background:rgba(236,212,140,.16);color:var(--gold-l);border:1px solid rgba(236,212,140,.28)}
+.room-card .rc-cta{background:var(--gold-l);color:var(--purple-d)}
+.room-card .rc-x{color:#fff}
