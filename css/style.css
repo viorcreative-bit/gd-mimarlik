@@ -564,3 +564,48 @@ a.video-play{display:block}
 .room-card .rc-tags li{background:rgba(236,212,140,.16);color:var(--gold-l);border:1px solid rgba(236,212,140,.28)}
 .room-card .rc-cta{background:var(--gold-l);color:var(--purple-d)}
 .room-card .rc-x{color:#fff}
+
+/* ── Daha fazla mor ── */
+.btn-dark{background:var(--purple)}
+.btn-dark:hover{background:var(--purple-d)}
+.btn-line{border-color:var(--purple);color:var(--purple)}
+.btn-line:hover{background:var(--purple);color:#fff}
+.chip:hover{border-color:var(--purple);color:var(--purple)}
+.chip.active{background:var(--purple);border-color:var(--purple);color:#fff}
+.nav-links a:hover{background:rgba(99,67,146,.1)}
+.nav-links a.current{background:var(--purple);color:#fff}
+.nav-cta{background:var(--purple);box-shadow:inset 0 0 0 1px rgba(236,212,140,.55)}
+.nav-cta:hover{background:var(--purple-d)}
+.edge-tab{background:var(--purple);border-left:2px solid var(--gold)}
+.brand em{color:var(--purple)}
+.card-tag{color:var(--purple)}
+.card:hover .card-name{color:var(--purple)}
+.val{border-top:2px solid var(--gold)}
+.val h3{color:var(--purple-d)}
+.step-n{color:var(--gold-d)}
+.f-word{-webkit-text-stroke-color:rgba(99,67,146,.38)}
+.footer{border-top:2px solid var(--gold)}
+.f-bot{border-top-color:rgba(201,166,74,.45)}
+.f-top h4::after{background:var(--purple)}
+.lightbox{background:rgba(28,16,50,.96)}
+.svc-dark{background:radial-gradient(900px 440px at 50% 0,rgba(150,108,214,.38),transparent 70%),linear-gradient(180deg,#2c1a49,#190f2c)}
+.svc-card{border-color:rgba(236,212,140,.18)}
+.svc-card:hover{border-color:rgba(236,212,140,.7)}
+.svc-card small{color:var(--gold-l)}
+.svc-card .svc-i{background:rgba(236,212,140,.1);color:var(--gold-l);border-color:rgba(236,212,140,.32)}
+.glass-sec::before{background:linear-gradient(135deg,rgba(77,51,119,.62),rgba(30,18,52,.5))}
+.cta::before{background:linear-gradient(135deg,rgba(77,51,119,.62),rgba(30,18,52,.55))}
+.page-head.has-bg::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,rgba(77,51,119,.5),transparent 62%)}
+.page-head.has-bg{box-shadow:inset 0 -3px 0 var(--gold)}
+.d-hero{box-shadow:inset 0 -3px 0 var(--gold)}
+.glass b{color:var(--purple-d)}
+.room-card .rc-title{color:#fff}
+
+/* ── Bölüm geçişleri: altın ── */
+.gold-rule{display:flex;align-items:center;justify-content:center;gap:1.7rem;padding:clamp(1.8rem,4vw,3.4rem) var(--gut);pointer-events:none}
+.gold-rule span{flex:1;max-width:320px;height:1.5px;background:linear-gradient(90deg,transparent,var(--gold))}
+.gold-rule span:last-child{background:linear-gradient(270deg,transparent,var(--gold))}
+.gold-rule i{width:9px;height:9px;background:var(--gold);transform:rotate(45deg);box-shadow:0 0 0 5px rgba(201,166,74,.16),-20px 0 0 -3px var(--purple),20px 0 0 -3px var(--purple)}
+.edge-gold{position:relative}
+.edge-gold::after{content:'';position:absolute;top:0;left:50%;width:min(360px,56%);height:2px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--gold),transparent);z-index:3}
+@media(max-width:700px){.gold-rule{gap:1rem}.gold-rule span{max-width:120px}}
