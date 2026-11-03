@@ -280,4 +280,17 @@
       else form.requestSubmit();
     });
   }
+
+  /* ── Bölüm geçişleri: altın ayraçlar ── */
+  const mainEl = $('#main');
+  if (mainEl) {
+    [...mainEl.children].forEach((s, i) => {
+      if (!i || s.tagName !== 'SECTION' || s.matches('.scene, .page-head, .strip')) return;
+      if (s.matches('.svc-dark, .glass-sec, .cta')) { s.classList.add('edge-gold'); return; }
+      const r = document.createElement('div');
+      r.className = 'gold-rule'; r.setAttribute('aria-hidden', 'true');
+      r.innerHTML = '<span></span><i></i><span></span>';
+      s.before(r);
+    });
+  }
 })();
