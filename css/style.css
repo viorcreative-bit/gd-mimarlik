@@ -620,3 +620,8 @@ a.video-play{display:block}
 .val::before{content:'';position:absolute;left:0;top:0;width:52px;height:4px;border-radius:99px;background:var(--foil) center/cover}
 .stat::after{height:4px;width:44px;border-radius:99px;background:var(--foil) center/cover}
 .eyebrow::before{height:3px;border-radius:99px;background:var(--foil) center/cover;transform:translateY(-.5px)}
+
+/* Proje kartlari: fotograf ustunde mor yok */
+.card .card-cat{color:var(--gold-l);opacity:1}
+.card .card-name,.card:hover .card-name{color:#fff}
+.card .card-tag{color:var(--ink)}
